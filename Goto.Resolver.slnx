@@ -6,8 +6,9 @@
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".filenesting.json" />
+    <File Path="Directory.Packages.props" />
   </Folder>
-  <Project Path="Goto/Goto.csproj" />
-  <Project Path="Goto.Tests/Goto.Tests.csproj" />
   <Project Path="DigitalLinkToolkit/DigitalLinkToolkit.csproj" />
+  <Project Path="Goto.Tests/Goto.Tests.csproj" />
+  <Project Path="Goto/Goto.csproj" />
 </Solution>

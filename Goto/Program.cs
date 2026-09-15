@@ -1,8 +1,6 @@
 using Goto;
 using Goto.Infrastructure.Authentication;
 using Goto.Services.Data;
-using Goto.Services.Data.Entities;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication
     .CreateBuilder(args)
@@ -18,11 +16,16 @@ if (builder.Environment.IsDevelopment() || args.Contains("--bootstrap"))
     using var context = scope.ServiceProvider.GetRequiredService<Context>();
     context.Database.EnsureCreated();
 
-    var bootstrapResult = context.SeedApiKeys(builder.Configuration.GetSection("ApiKeys").Get<ApiKeyDefinition>());
+    var apiKeyDefinition = builder.Configuration.GetSection("ApiKeys").Get<ApiKeyDefinition>();
 
-    foreach(var result in bootstrapResult)
+    if(apiKeyDefinition is not null)
     {
-        Console.WriteLine(result);
+        var bootstrapResult = context.SeedApiKeys(apiKeyDefinition);
+
+        foreach(var result in bootstrapResult)
+        {
+            Console.WriteLine(result);
+        }
     }
 }
 

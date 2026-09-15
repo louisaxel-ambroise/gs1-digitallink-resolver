@@ -5,7 +5,6 @@ using Goto.Services.Data.Entities;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 using System.Text;
 
 namespace Goto.Controllers;
