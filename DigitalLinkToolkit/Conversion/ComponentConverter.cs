@@ -99,7 +99,7 @@ internal static class ComponentConverter
             var validationIssue = new ValidationIssue
             {
                 Code = ErrorCodes.InvalidAIValue,
-                Message = "Value does not match the AI pattern",
+                Message = "Value is not valid for the specified AI",
                 Key = identifier.Code,
                 Value = value
             };
@@ -122,17 +122,22 @@ internal static class ComponentConverter
 
                     issues.Add(validationIssue);
                 }
-                if (component.Flags.HasFlag(ComponentFlag.CheckDigit) && !CheckDigit.Validate(value))
+                if (component.Flags.HasFlag(ComponentFlag.CheckDigit))
                 {
-                    var validationIssue = new ValidationIssue
-                    {
-                        Code = ErrorCodes.InvalidCheckDigit,
-                        Message = "CheckDigit validation failed",
-                        Key = identifier.Code,
-                        Value = value
-                    };
+                    var expectedCheckDigit = CheckDigit.Calculate(value[..^1]);
 
-                    issues.Add(validationIssue);
+                    if (expectedCheckDigit != value[^1])
+                    {
+                        var validationIssue = new ValidationIssue
+                        {
+                            Code = ErrorCodes.InvalidCheckDigit,
+                            Message = $"CheckDigit validation failed. Expected {expectedCheckDigit} but found {value[^1]}",
+                            Key = identifier.Code,
+                            Value = value
+                        };
+
+                        issues.Add(validationIssue);
+                    }
                 }
 
                 var componentValue = component.Flags.HasFlag(ComponentFlag.FixedLength)

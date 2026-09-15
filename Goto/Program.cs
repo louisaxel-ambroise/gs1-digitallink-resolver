@@ -17,6 +17,7 @@ if (builder.Environment.IsDevelopment() || args.Contains("--bootstrap"))
     using var scope = app.Services.CreateScope();
     using var context = scope.ServiceProvider.GetRequiredService<Context>();
     context.Database.EnsureCreated();
+
     var bootstrapResult = context.SeedApiKeys(builder.Configuration.GetSection("ApiKeys").Get<ApiKeyDefinition>());
 
     foreach(var result in bootstrapResult)
@@ -25,7 +26,6 @@ if (builder.Environment.IsDevelopment() || args.Contains("--bootstrap"))
     }
 }
 
-app.UseHttpsRedirection();
 app.UseCors();
 app.UseAuthorization();
 app.MapStaticAssets();

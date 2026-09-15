@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace Goto.Infrastructure.Routing.Constraints;
 
-public abstract class GS1ResolverRouteAttribute(ResolverType resolverType) : HttpMethodAttribute(["GET", "HEAD"], "{**_}"), IActionConstraint
+public abstract class GS1ResolverRouteAttribute(ResolverType resolverType) : HttpMethodAttribute(["GET", "HEAD"], "{**_:minlength(2)}"), IActionConstraint
 {
     public bool Accept(ActionConstraintContext context)
     {

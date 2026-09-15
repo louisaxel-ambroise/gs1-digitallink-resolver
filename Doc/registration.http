@@ -1,5 +1,5 @@
 @baseUrl=https://localhost:7111
-@apiKey=74501e8e4b6bcb7616790ed515c45250
+@apiKey=6259fc2daa1eef4d3777e95001d10fef
 
 ### List registered anchors
 GET {{baseUrl}}/api/anchors
@@ -16,6 +16,14 @@ X-Api-Key: {{apiKey}}
   "description": "Product description"
 }
 
+### Update description of an anchor
+PUT {{baseUrl}}/api/anchors/qTFrufVwob
+Content-Type: application/json
+X-Api-Key: {{apiKey}}
+{
+  "description": "This is an updated desc twice"
+}
+
 ### Get details of an anchor
 GET {{baseUrl}}/api/anchors/qTFrufVwob
 Content-Type: application/json
@@ -26,12 +34,12 @@ POST {{baseUrl}}/api/anchors/qTFrufVwob/links
 Content-Type: application/json
 X-Api-Key: {{apiKey}}
 {
-  "type": "gs1:homepage",
-  "redirectUrl": "https://goto.it.com/en",
+  "type": "gs1:pip",
+  "redirectUrl": "https://goto.it.com/en/{01}",
   "title": "Company homepage",
   "languages": [ "en" ],
   "mediaType": "text/html",
-  "isDefault": true
+  "isDefault": false
 }
 
 ### Remove a link from an anchor

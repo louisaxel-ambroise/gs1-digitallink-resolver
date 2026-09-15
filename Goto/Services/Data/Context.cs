@@ -88,6 +88,7 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
 
     public IEnumerable<string> SeedApiKeys(ApiKeyDefinition apiKeyDefinition)
     {
+        var random = new Random(apiKeyDefinition.Seed ?? Random.Shared.Next());
         var executionTime = TimeProvider.System.GetUtcNow();
         var allKeys = Set<ApiKey>().AsTracking().Where(k => k.EndValidityDate >= executionTime).ToList();
         var processedKeys = new List<ApiKey>();
@@ -98,7 +99,7 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
 
             if (existingKey is null)
             {
-                var secret = Convert.ToHexStringLower(RandomNumberGenerator.GetBytes(16));
+                var secret = random.GetHexString(32, true);
                 var hash = SHA256.HashData(Encoding.UTF8.GetBytes(secret));
 
                 var apiKey = new ApiKey

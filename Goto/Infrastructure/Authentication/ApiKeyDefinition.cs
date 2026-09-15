@@ -2,11 +2,12 @@
 
 public record ApiKeyDefinition
 {
-    public Key[] Keys { get; set; }
+    public required int? Seed { get; set; }
+    public required Key[] Keys { get; set; }
 }
 
 public record Key
 {
-    public string Name { get; set; }
-    public string CompanyPrefix { get; set; }
+    public required string Name { get; set; }
+    public required string CompanyPrefix { get; set; }
 }
