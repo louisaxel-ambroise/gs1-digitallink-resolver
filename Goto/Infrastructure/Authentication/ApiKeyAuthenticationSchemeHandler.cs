@@ -20,8 +20,8 @@ public sealed class ApiKeyAuthenticationSchemeHandler(IOptionsMonitor<ApiKeyAuth
             return Task.FromResult(AuthenticateResult.NoResult());
         }
 
-        var apiKey = Context.Request.Headers[HeaderKey].FirstOrDefault(string.Empty);
-        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(apiKey));
+        var apiKey = Context.Request.Headers[HeaderKey].Where(h => h is not null).FirstOrDefault(string.Empty);
+        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(apiKey!));
         var keyDetails = context.GetApiKeyDetails(Convert.ToBase64String(hash));
 
         if(keyDetails is null || keyDetails.BeginValidityDate > TimeProvider.GetUtcNow())

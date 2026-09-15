@@ -1,5 +1,4 @@
-﻿using DigitalLinkToolkit.Conversion.Model;
-using Goto.Controllers.Results;
+﻿using Goto.Controllers.Results;
 using Goto.Infrastructure.Routing.Binding;
 using Goto.Services.Data.Entities;
 using Microsoft.AspNetCore.Authorization;

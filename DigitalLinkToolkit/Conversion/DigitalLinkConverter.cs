@@ -328,7 +328,7 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
             uncompressedQueryStrings.Add($"{key}={Uri.EscapeDataString(value ?? string.Empty)}");
         }
 
-        compressedBuffer.Append(new string('0', (6 - compressedBuffer.Length % 6) % 6));
+        compressedBuffer.Append('0', (6 - compressedBuffer.Length % 6) % 6);
         resultBuffer.Append(compressedBuffer.GetChars());
 
         if (uncompressedQueryStrings.Count > 0)
