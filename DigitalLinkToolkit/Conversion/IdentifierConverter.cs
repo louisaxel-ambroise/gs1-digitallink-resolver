@@ -15,13 +15,14 @@ public sealed class IdentifierConverter(ApplicationIdentifiers identifiers)
 
         if (parts.Length > 0 && key is null)
         {
-            throw new InvalidDigitalLinkException([new() { Code = ErrorCodes.InvalidPrefix, Key = ErrorCodes.InvalidInput, Message = "Input is an invalid DigitalLink prefix", Value = input }]);
+            throw new InvalidDigitalLinkException([new() { Code = ErrorCodes.InvalidPrefix, Key = ErrorCodes.InvalidInput, Message = "DigitalLink input is missing a primary key identifier", Value = input }]);
         }
         if (key is not null && parts.Length > 1 && !ValidateKey(key, parts[1], out companyPrefix))
         {
             throw new InvalidDigitalLinkException([new() { Code = ErrorCodes.InvalidCompanyPrefix, Key = ErrorCodes.InvalidCompanyPrefix, Message = "Input has an invalid company prefix", Value = input }]);
         }
-        for (var i = 2; i < parts.Length - 2; i += 2)
+
+        for (var i = 2; i <= parts.Length - 2; i += 2)
         {
             if (!ValidateQualifier(parts[i], parts[i + 1]))
             {
@@ -38,7 +39,7 @@ public sealed class IdentifierConverter(ApplicationIdentifiers identifiers)
 
     private bool ValidateQualifier(string code, string value)
     {
-        var qualifier = identifiers.Identifiers.SingleOrDefault(i => i.Code == code && i.Type == AIType.PrimaryKey);
+        var qualifier = identifiers.Identifiers.SingleOrDefault(i => i.Code == code && i.Type == AIType.Qualifier);
 
         if (qualifier is null) return false;
         if (value.Length > qualifier.Components.Sum(c => c.Length)) return false;

@@ -29,5 +29,4 @@ public sealed class MetadataController
             }
         });
     }
-
 }

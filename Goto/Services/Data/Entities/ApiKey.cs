@@ -2,7 +2,7 @@
 
 public sealed class ApiKey
 {
-    public string Id { get; init; }
+    public required string Id { get; init; }
     public required string Name { get; init; }
     public required string CompanyPrefix { get; init; }
     public required DateTimeOffset BeginValidityDate { get; init; }

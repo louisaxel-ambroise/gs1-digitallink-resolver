@@ -86,41 +86,41 @@ body {
     border-radius: var(--radius);
     padding: 24px;
     line-height: 1.55;
-}
 
-    .content h1 {
+    & h1 {
         text-align: center;
         margin-bottom: 3px;
         font-size: 24px;
         font-weight: 600;
     }
 
-    .content header {
+    & header {
         margin-top: 30px;
         margin-bottom: 6px;
-    }
 
-        .content header h2 {
+        & h2 {
             font-size: 20px;
             font-weight: 600;
         }
 
-        .content header p.anchor {
+        & p.anchor {
             font-size: 12px;
             font-family: consolas, sans-serif;
             color: var(--tag-lang);
         }
+    }
 
-    .content h3 {
+    & h3 {
         margin-top: 8px;
         margin-bottom: 4px;
         font-size: 16px;
         font-weight: 500;
     }
 
-    .content summary h3{
+    & summary h3 {
         display: inline-block;
     }
+}
 
 a {
     color: var(--primary);
@@ -177,13 +177,14 @@ dl {
     dl {
         display: block;
         width: 100%;
-    }
-        dl a {
+
+        & a {
             display: block;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
         }
+    }
 
     dt {
         font-weight: 700;
@@ -208,12 +209,12 @@ footer {
     text-align: center;
     margin-top: 25px;
     font-size: 14px;
-}
 
-    footer a {
+    & a {
         color: var(--subtle);
     }
 
-        footer a:hover {
-            color: var(--primary);
-        }
+    & a:hover {
+        color: var(--primary);
+    }
+}

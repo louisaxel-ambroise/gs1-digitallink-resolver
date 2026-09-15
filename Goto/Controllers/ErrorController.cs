@@ -31,36 +31,36 @@ public sealed class ErrorController
                 Type = "BadRequest",
                 Title = "The request specified an invalid DigitalLink",
                 Detail = ex.Message,
-                Errors = ex.Issues.Select(i => new ErrorDetail { Code = i.Code, Message = FormatMessage(i) }),
-                Status = (int)HttpStatusCode.BadRequest
+                Errors = ex.Issues.Any() ? ex.Issues.Select(i => new ErrorDetail { Code = i.Code, Message = FormatMessage(i) }) : null,
+                Status = StatusCodes.Status400BadRequest
             },
             DbUpdateException ex => new ErrorResponse
             {
                 Type = "Conflict",
                 Title = "There is a conflict while registering the DigitalLink",
                 Detail = ex.Message,
-                Status = (int)HttpStatusCode.Conflict
+                Status = StatusCodes.Status409Conflict
             },
             ArgumentOutOfRangeException ex => new ErrorResponse
             {
                 Type = "BadRequest",
                 Title = "The request specified an invalid argument",
                 Detail = ex.Message,
-                Status = (int)HttpStatusCode.BadRequest
+                Status = StatusCodes.Status400BadRequest
             },
             var ex when ex is not null => new ErrorResponse
             {
                 Type = "InternalError",
                 Title = "Unable to process the request",
                 Detail = ex.Message,
-                Status = (int)HttpStatusCode.InternalServerError
+                Status = StatusCodes.Status500InternalServerError
             },
             _ => new ErrorResponse
             {
                 Type = "InternalError",
                 Title = "Unable to process the request",
                 Detail = "An unexpected error occured",
-                Status = (int)HttpStatusCode.InternalServerError
+                Status = StatusCodes.Status500InternalServerError
             }
         };
     }

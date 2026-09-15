@@ -13,7 +13,7 @@
     <p>@Localizer[Model.Detail]<br /><strong>@Localizer["This request should not be retried."]</strong></p>
 }
 
-@if (Model.Errors.Any())
+@if (Model.Errors is not null && Model.Errors.Any())
 {
     <details>
         <summary>@Localizer["Details of the error"]</summary>

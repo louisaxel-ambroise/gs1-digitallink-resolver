@@ -42,7 +42,7 @@ public sealed class LinksetResultConverter : JsonConverter<LinksetResult>
                 }));
             }
 
-            var defaultLink = a.Links.FirstOrDefault(l => l.IsDefault);
+            var defaultLink = a.Links.FirstOrDefault(l => l.IsDefault, a.Links.First());
             dict["https://ref.gs1.org/voc/defaultLink"] = new[]{ new
             {
                 Title = defaultLink?.Title ?? "Linkset",
