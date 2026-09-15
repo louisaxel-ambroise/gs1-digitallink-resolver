@@ -23,23 +23,24 @@ public sealed class AnchorController(Context context, Clock clock, ClaimsPrincip
     [HttpGet]
     public IActionResult ListAnchors()
     {
-            var anchors = context.AnchorsForUser(principal)
+        var anchors = context
+            .AnchorsForUser(principal)
             .OrderBy(a => a.Id)
             .Select(a => new AnchorResult
             {
                 Id = encoder.Encode(a.Id),
+                CompanyPrefix = a.CompanyPrefix,
                 Prefix = a.Prefix,
                 Description = a.Description
             });
 
-        return new OkObjectResult(new AnchorListResult { Anchors = anchors.ToList() });
+        return new OkObjectResult(new AnchorListResult { Anchors = [.. anchors] });
     }
 
     [HttpPost]
     public IActionResult CreateAnchor([FromBody] AddAnchorRequest request, [FromServices] IdentifierConverter converter)
     {
         var identifier = converter.Parse(request.Prefix);
-
         var anchor = new Anchor
         {
             Prefix = identifier.Value,
@@ -51,13 +52,24 @@ public sealed class AnchorController(Context context, Clock clock, ClaimsPrincip
         return new CreatedResult();
     }
 
+    [HttpPut("{anchorKey}")]
+    public IActionResult UpdateAnchor([FromRoute] string anchorKey, [FromBody] UpdateAnchorRequest request)
+    {
+        var anchorId = encoder.Decode(anchorKey).Single();
+        var anchor = context.AnchorsForUser(principal).First(a => a.Id == anchorId);
+
+        anchor.Description = request.Description;
+
+        return new NoContentResult();
+    }
+
     [HttpDelete("{anchorKey}")]
     public IActionResult CleanAnchor([FromRoute] string anchorKey)
     {
         var anchorId = encoder.Decode(anchorKey).Single();
-        var anchors = context.AnchorsForUser(principal).First(a => a.Id == anchorId);
+        var anchor = context.AnchorsForUser(principal).First(a => a.Id == anchorId);
 
-        foreach (var activeLink in anchors.Links.Where(l => l.ActiveUntil >= clock.UtcNow))
+        foreach (var activeLink in anchor.Links.Where(l => l.ActiveUntil >= clock.UtcNow))
         {
             activeLink.ActiveUntil = DateTimeOffset.Min(activeLink.ActiveFrom, clock.UtcNow);
         }

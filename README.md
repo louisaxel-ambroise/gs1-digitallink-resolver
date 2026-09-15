@@ -34,13 +34,27 @@ The registration of links for a DigitalLink is made in 2 steps:
 Registeration of an Anchor:
 
 ```sh
-curl -X POST "https://id.goto.it.com/api/anchor" -H "Content-Type: application/json" -d '{
+curl -X POST "https://id.goto.it.com/api/anchor" -H "Content-Type: application/json" -H "X-Api-Key: {your_api_key}" -d '{
   "prefix": "/01/09506000134352",
   "description":"My product description"
 }'
 ```
 
+Add a link to an anchor:
+
+```sh
+curl -X POST "https://id.goto.it.com/api/anchor/GMfbpDWLzl" -H "Content-Type: application/json" -H "X-Api-Key: {your_api_key}" -d '{
+  "linkType": "gs1:pip",
+  "redirectUrl": "https://goto.it.com/en/{01}",
+  "title": "My product information page",
+  "languages": [ "en" ],
+  "mediaType": "text/html",
+  "isDefault": true
+}'
+```
+
 The redirectUrl can follow the [UriTemplate](https://www.rfc-editor.org/rfc/rfc6570) specification, using either the AI code (digit only - 01, 10, ..) or short code (gtin, lot, ...)
+The active from/to dates can be specified in the request if the link has an expiration date.
 
 ### Resolve a DigitalLink
 

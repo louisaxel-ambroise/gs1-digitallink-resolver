@@ -9,12 +9,14 @@ using Microsoft.EntityFrameworkCore;
 using Goto.Services.Data;
 using Goto.Services.Data.Entities;
 using Goto.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Goto.Controllers;
 
 [Controller]
 [TimeTraveler]
 [InsightsTracking]
+[AllowAnonymous]
 public sealed class ResolverController
 {
     [LinksetResolverRoute]
@@ -88,8 +90,8 @@ public sealed class ResolverController
             return new NotFoundObjectResult(ErrorResponse.NotFound);
         }
         
-        var bestMatch = anchor.FindBestMatches(languages, mediaTypes);
-        var defaultLink = ResolutionResultLink.Map(bestMatch.Take(1), digitalLink).FirstOrDefault()?.Href ?? digitalLink.BuildLinksetLink();
+        var bestMatch = anchor.FindBestMatches(languages, mediaTypes).Take(1);
+        var defaultLink = ResolutionResultLink.Map(bestMatch, digitalLink).FirstOrDefault()?.Href ?? digitalLink.BuildLinksetLink();
 
         return new RedirectResult(defaultLink, permanent: false, preserveMethod: true) ;
     }

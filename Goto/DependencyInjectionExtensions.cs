@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Sqids;
 using System.Threading.Channels;
+using System.Text.Json.Serialization;
 
 namespace Goto;
 
@@ -70,7 +71,11 @@ public static class DependencyInjectionExtensions
             options.ModelBinderProviders.Insert(0, new GS1ResolverModelBinderProvider());
             options.OutputFormatters.Add(new HtmlViewFormatter());
             options.RespectBrowserAcceptHeader = true;
-        }).AddJsonOptions(opt => opt.JsonSerializerOptions.Converters.Insert(0, new LinksetResultConverter()));
+        }).AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            options.JsonSerializerOptions.Converters.Insert(0, new LinksetResultConverter());
+        });
         builder.Services.Configure<RazorViewEngineOptions>(options =>
         {
             options.ViewLocationFormats.Clear();

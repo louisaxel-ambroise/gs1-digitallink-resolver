@@ -5,10 +5,10 @@ public sealed class ErrorResponse
     public required string Type { get; init; }
     public required string Title { get; init; }
     public required string Detail { get; init; }
-    public IEnumerable<ErrorDetail> Errors { get; init; } = [];
+    public IEnumerable<ErrorDetail>? Errors { get; init; }
     public int Status { get; init; }
 
-    public static ErrorResponse InternalServerError => new()
+    public static ErrorResponse InternalServerError = new()
     {
         Status = StatusCodes.Status500InternalServerError,
         Type = "InternalServerError",
@@ -16,7 +16,7 @@ public sealed class ErrorResponse
         Detail = "Unable to process the request"
     };
 
-    public static ErrorResponse NotFound => new()
+    public static ErrorResponse NotFound = new()
     {
         Status = StatusCodes.Status404NotFound,
         Type = "NotFound",
