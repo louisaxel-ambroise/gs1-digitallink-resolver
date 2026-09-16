@@ -21,7 +21,7 @@ public static class Extensions
     {
         public bool IsSuccessStatusCode()
         {
-            return response.StatusCode is >= 200 and < 400;
+            return response.StatusCode is < 400;
         }
     }
 
