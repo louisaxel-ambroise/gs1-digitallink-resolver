@@ -8,7 +8,6 @@ public record ApplicationIdentifiers
     public static ApplicationIdentifiers Shared { get; private set; } = new ();
 
     public IReadOnlyList<AIIdentifier> Identifiers { get; init; } = [];
-    public Dictionary<string, int> CodeLength { get; init; } = [];
 
     public bool TryGet(string key, out AIIdentifier ai)
     {
