@@ -15,6 +15,13 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
 {
     private readonly GrammarFormatter _formatter = new(tables);
 
+    public bool TryGetCodeLength(string code, out int length)
+    {
+        length = tables.Single(t => t.TableId == "K").Rows.Single(r => r.GetString("a") == code).GetNumber("b");
+
+        return length > 0;
+    }
+
     public string Decompress(string path, string host)
     {
         var decompressed = new StringBuilder();
@@ -26,12 +33,16 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
                 decompressed.Append(Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0'));
             }
         }
-        if (path.StartsWith("ex"))
+        else if (path.StartsWith("ex"))
         {
             foreach (var c in path[2..])
             {
                 decompressed.Append(Alphabets.GetBinary(c));
             }
+        }
+        else
+        {
+            throw new InvalidOperationException("Only 'ex' and 'eh' compressed formats are supported for decompression.");
         }
 
         return Translate(decompressed.ToString(), string.Concat("uriStem=", host), LevelType.Gs1_Digital_Link);
@@ -268,7 +279,11 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
             if(value >> 4 <= 9 && (value & 0x0F) <= 9)
             {
                 var code = value.ToString("X2");
-                var length = tables.Single(t => t.TableId == "K").Rows.Single(r => r.GetString("a") == code).GetNumber("b");
+                
+                if(!TryGetCodeLength(code, out var length))
+                {
+                    return false;
+                }
 
                 for (var i = 2; i < length; i++)
                 {

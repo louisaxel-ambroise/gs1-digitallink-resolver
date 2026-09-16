@@ -177,10 +177,11 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
             }
             else
             {
-                if (!identifiers.CodeLength.TryGetValue(code, out var length))
+                if (!translationEngine.TryGetCodeLength(code, out var length))
                 {
                     return false;
                 }
+
                 for (var i = 2; i < length; i++)
                 {
                     binaryStream.Buffer(4);
