@@ -32,7 +32,7 @@
     }
 }
 
-[data-theme="dark"] {
+[data-theme="light"] {
     --bg: #f4f4f5;
     --link-bg: #efefef;
     --border: #DDD;
@@ -45,7 +45,7 @@
     --shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-[data-theme="light"] {
+[data-theme="dark"] {
     --bg: #0f0f10;
     --link-bg: #151515;
     --border: #333;
