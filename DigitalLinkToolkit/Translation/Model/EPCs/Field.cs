@@ -17,7 +17,7 @@ public class Field
     [JsonPropertyName("compression")]
     public string? Compression { get; set; }
     [JsonPropertyName("padChar")]
-    public string? PadChar { get; set; }
+    public char? PadChar { get; set; }
     [JsonPropertyName("padDir")]
     public Direction? PadDir { get; set; }
     [JsonPropertyName("bitPadDir")]

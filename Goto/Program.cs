@@ -1,8 +1,6 @@
 using Goto;
 using Goto.Infrastructure.Authentication;
 using Goto.Services.Data;
-using Goto.Services.Data.Entities;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication
     .CreateBuilder(args)

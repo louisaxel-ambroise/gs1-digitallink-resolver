@@ -8,7 +8,7 @@ namespace DigitalLinkToolkit.Translation;
 
 public sealed class GrammarFormatter(List<Table> tables)
 {
-    internal string Format(Level level, Option option, Dictionary<string, string> parameters)
+    internal string Format(Option option, Dictionary<string, string> parameters)
     {
         if (string.IsNullOrEmpty(option.Grammar))
             return string.Empty;
@@ -107,8 +107,8 @@ public sealed class GrammarFormatter(List<Table> tables)
                 if(formatted.Length < field.BitLength)
                 {
                     formatted = field.BitPadDir == Direction.Left
-                        ? formatted.PadLeft(field.BitLength.Value, (field.PadChar ?? "0").ElementAt(0))
-                        : formatted.PadRight(field.BitLength.Value, (field.PadChar ?? "0").ElementAt(0));
+                        ? formatted.PadLeft(field.BitLength.Value, field.PadChar ?? '0')
+                        : formatted.PadRight(field.BitLength.Value, field.PadChar ?? '0');
                 }
 
                 return formatted;
