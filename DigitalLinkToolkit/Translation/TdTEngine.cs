@@ -88,7 +88,7 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
         ApplyRules(parameters, inputOption.Level, RuleType.Extract); // 5. Perform any rules of type EXTRACT within the input format option in order to calculate additional derived fields
         ApplyRules(parameters, outputOption.Level, RuleType.Format); // 7. Perform any rules of type FORMAT within the output format in order to calculate additional derived fields
 
-        var result = _formatter.Format(outputOption.Level, outputOption.Option, parameters); // 8. Use the grammar string and substitutions from the associative array to build the output value
+        var result = _formatter.Format(outputOption.Option, parameters); // 8. Use the grammar string and substitutions from the associative array to build the output value
 
         return PostProcessOutput(result, outputOption.Level, parameters);
     }

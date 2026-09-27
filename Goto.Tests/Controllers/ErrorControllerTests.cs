@@ -42,7 +42,7 @@ public static class ErrorControllerTests
             Assert.AreEqual("The request specified an invalid DigitalLink", errorResponse.Title);
             Assert.AreEqual("The provided digital link is invalid", errorResponse.Detail);
             Assert.AreEqual((int)HttpStatusCode.BadRequest, objectResult.StatusCode);
-            CollectionAssert.AreEquivalent(new[] { new ErrorDetail { Code = "01", Message = "Invalid AI (Key: '01', Value: '0123456')" } }, errorResponse.Errors.ToList());
+            CollectionAssert.AreEquivalent(new[] { new ErrorDetail { Code = "01", Message = "Invalid AI (Key: '01', Value: '0123456')" } }, errorResponse.Errors?.ToList());
         }
 
         [TestMethod]
