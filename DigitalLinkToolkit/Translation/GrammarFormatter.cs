@@ -6,9 +6,9 @@ using System.Text;
 
 namespace DigitalLinkToolkit.Translation;
 
-public sealed class GrammarFormatter(List<Table> tables)
+internal sealed class GrammarFormatter(List<Table> tables)
 {
-    internal string Format(Level level, Option option, Dictionary<string, string> parameters)
+    internal string Format(Option option, Dictionary<string, string> parameters)
     {
         if (string.IsNullOrEmpty(option.Grammar))
             return string.Empty;
