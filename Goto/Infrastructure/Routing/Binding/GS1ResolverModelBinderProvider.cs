@@ -18,9 +18,7 @@ public sealed class GS1ResolverModelBinderProvider : IModelBinderProvider
         {
             return new FromQueryModelBinder();
         }
-        else
-        {
-            return null;
-        }
+        
+        return null;
     }
 }

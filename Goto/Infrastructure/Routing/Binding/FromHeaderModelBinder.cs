@@ -5,8 +5,6 @@ namespace Goto.Infrastructure.Routing.Binding;
 
 internal class FromHeaderModelBinder : IModelBinder
 {
-    public string? Name { get; set; }
-
     public async Task BindModelAsync(ModelBindingContext bindingContext)
     {
         var request = bindingContext.HttpContext.Request;
