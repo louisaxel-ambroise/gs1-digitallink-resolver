@@ -177,4 +177,28 @@ public class InsightsTrackingAttributeTests
         Assert.AreEqual(0, insight.LinkCount);
         Assert.AreEqual(500, insight.StatusCode);
     }
+
+    [TestMethod]
+    public void ShouldMapFromLinksetResult()
+    {
+        var channel = Channel.CreateBounded<Insight>(1);
+        var provider = new ServiceCollection().AddSingleton(channel).AddSingleton(new Clock()).BuildServiceProvider();
+        var httpContext = new DefaultHttpContext
+        {
+            RequestServices = provider
+        };
+
+        var actionContext = new ActionContext(httpContext, new(), new());
+        var context = new ActionExecutedContext(actionContext, [], new object())
+        {
+            Result = new OkObjectResult(new LinksetResult() { Anchors = [ new LinksetResultAnchor { Anchor = "https://test.url", Description = "test desc", Links = [new LinksetLink { Href = "https://redirect.url", Title = "test", LinkType = "gs1:pip"}] }], LinksetUrl = "https://test.url" })
+        };
+
+        Attribute.OnActionExecuted(context);
+
+        var insight = channel.Reader.TryRead(out var readInsight) ? readInsight : null;
+        Assert.IsNotNull(insight);
+        Assert.AreEqual(1, insight.LinkCount);
+        Assert.AreEqual(200, insight.StatusCode);
+    }
 }
