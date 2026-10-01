@@ -22,7 +22,8 @@ public sealed class InsightsTrackingAttribute : ActionFilterAttribute
         var channel = context.HttpContext.RequestServices.GetRequiredService<Channel<Insight>>();
         var insight = context.Result switch
         {
-            MultipleChoicesObjectResult multipleChoices => CreateInsight(context.HttpContext, 300, (multipleChoices.Value as ResolutionResult)?.Links.Count() ?? 0),
+            MultipleChoicesObjectResult res when res.Value is ResolutionResult resolution => CreateInsight(context.HttpContext, 300, resolution.Links.Count()),
+            OkObjectResult res when res.Value is LinksetResult linkset => CreateInsight(context.HttpContext, 200, linkset.Anchors.Sum(a => a.Links.Count())),
             RedirectResult => CreateInsight(context.HttpContext, 307, 1),
             NotFoundObjectResult => CreateInsight(context.HttpContext, 404, 0),
             _ => CreateInsight(context.HttpContext, 500, 0)
