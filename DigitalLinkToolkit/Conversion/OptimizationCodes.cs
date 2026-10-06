@@ -20,8 +20,8 @@ public record OptimizationCodes
     public bool TryGetMatching(IEnumerable<string> ais, out OptimizationCode result)
     {
         result = Codes
-            .OrderByDescending(x => x.Priority)
-            .FirstOrDefault(x => x.IsFulfilledBy(ais), OptimizationCode.Default);
+            .OrderByDescending(x => x.SequenceAIs.Length)
+            .FirstOrDefault(x => x.SequenceAIs.All(ais.Contains), OptimizationCode.Default);
 
         return result != OptimizationCode.Default;
     }
@@ -32,10 +32,6 @@ public record OptimizationCodes
         public required string[] SequenceAIs { get; init; }
         public required string Meaning { get; init; }
         public required string Usage { get; init; }
-
-        public int Priority => SequenceAIs.Length;
-
-        public bool IsFulfilledBy(IEnumerable<string> identifierCodes) => SequenceAIs.All(identifierCodes.Contains);
 
         public static readonly OptimizationCode Default = new()
         {
