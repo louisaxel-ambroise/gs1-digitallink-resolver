@@ -2,6 +2,26 @@
 
 namespace DigitalLinkToolkit.Conversion.DTOs;
 
+public record OptimizationCode
+{
+    public required string Code { get; init; }
+    public required string[] SequenceAIs { get; init; }
+    public required string Meaning { get; init; }
+    public required string Usage { get; init; }
+
+    public int Priority => SequenceAIs.Length;
+
+    public bool IsFulfilledBy(IEnumerable<string> identifierCodes) => SequenceAIs.All(identifierCodes.Contains);
+
+    public static readonly OptimizationCode Default = new()
+    {
+        Code = string.Empty,
+        SequenceAIs = [],
+        Meaning = string.Empty,
+        Usage = string.Empty
+    };
+}
+
 public record AIIdentifier
 {
     public static readonly AIIdentifier None = new();

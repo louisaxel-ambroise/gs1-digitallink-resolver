@@ -7,7 +7,7 @@ namespace Goto.Infrastructure.Routing.Filters;
 
 public sealed class TransactionalControllerAttribute : ControllerAttribute, IActionFilter
 {
-    static readonly string[] WriteMethods = [ HttpMethods.Post, HttpMethods.Put, HttpMethods.Delete ];
+    static readonly string[] WriteMethods = [ HttpMethods.Patch, HttpMethods.Post, HttpMethods.Put, HttpMethods.Delete ];
 
     public void OnActionExecuted(ActionExecutedContext context)
     {

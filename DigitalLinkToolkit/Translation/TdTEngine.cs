@@ -15,6 +15,13 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
 {
     private readonly GrammarFormatter _formatter = new(tables);
 
+    public bool TryGetCodeLength(string code, out int length)
+    {
+        length = tables.Single(t => t.TableId == "K").Rows.Single(r => r.GetString("a") == code).GetNumber("b");
+
+        return length > 0;
+    }
+
     public string Decompress(string path, string host)
     {
         var decompressed = new StringBuilder();
@@ -26,12 +33,16 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
                 decompressed.Append(Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0'));
             }
         }
-        if (path.StartsWith("ex"))
+        else if (path.StartsWith("ex"))
         {
             foreach (var c in path[2..])
             {
                 decompressed.Append(Alphabets.GetBinary(c));
             }
+        }
+        else
+        {
+            throw new InvalidOperationException("Only 'ex' and 'eh' compressed formats are supported for decompression.");
         }
 
         return Translate(decompressed.ToString(), string.Concat("uriStem=", host), LevelType.Gs1_Digital_Link);
@@ -77,7 +88,7 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
         ApplyRules(parameters, inputOption.Level, RuleType.Extract); // 5. Perform any rules of type EXTRACT within the input format option in order to calculate additional derived fields
         ApplyRules(parameters, outputOption.Level, RuleType.Format); // 7. Perform any rules of type FORMAT within the output format in order to calculate additional derived fields
 
-        var result = _formatter.Format(outputOption.Level, outputOption.Option, parameters); // 8. Use the grammar string and substitutions from the associative array to build the output value
+        var result = _formatter.Format(outputOption.Option, parameters); // 8. Use the grammar string and substitutions from the associative array to build the output value
 
         return PostProcessOutput(result, outputOption.Level, parameters);
     }
@@ -263,16 +274,22 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
 
         if (bitstream.Remaining >= 8)
         {
-            var value = Convert.ToByte(bitstream.ReadUntil(8), 2);
+            var value = Convert.ToByte(bitstream.Read(8), 2);
 
             if(value >> 4 <= 9 && (value & 0x0F) <= 9)
             {
                 var code = value.ToString("X2");
-                var length = tables.Single(t => t.TableId == "K").Rows.Single(r => r.GetString("a") == code).GetNumber("b");
+                
+                if(!TryGetCodeLength(code, out var length))
+                {
+                    return false;
+                }
 
                 for (var i = 2; i < length; i++)
                 {
-                    var encodedChar = bitstream.ReadUntil(4);
+                    if (bitstream.Remaining < 4) return false;
+
+                    var encodedChar = bitstream.Read(4);
                     var remain = Convert.ToByte(encodedChar, 2);
 
                     code += remain.ToString("X1");
@@ -304,8 +321,8 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
         if(field.BitPadDir is not null)
         {
             value = field.BitPadDir is Direction.Left
-                ? value.TrimStart((field.PadChar ?? "0").ElementAt(0))
-                : value.TrimEnd((field.PadChar ?? "0").ElementAt(0));
+                ? value.TrimStart(field.PadChar ?? '0')
+                : value.TrimEnd(field.PadChar ?? '0');
         }
 
         string parsedValue;
