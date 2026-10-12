@@ -29,11 +29,9 @@ public static class DependencyInjectionExtensions
         tdtEngineBuilder = Directory.GetFiles("wwwroot/Tables").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddTableFile(file));
 
         CompanyPrefix.Initialize("wwwroot/gcpprefixformatlist.xml");
-        OptimizationCodes.Initialize("wwwroot/OptimizationCodes.json", new() { PropertyNameCaseInsensitive = true });
         ApplicationIdentifiers.Initialize("wwwroot/ApplicationIdentifiers.json", new() { PropertyNameCaseInsensitive = true });
 
         builder.Services.AddSingleton(tdtEngineBuilder.BuildEngine());
-        builder.Services.AddSingleton(OptimizationCodes.Shared);
         builder.Services.AddSingleton(ApplicationIdentifiers.Shared);
         builder.Services.AddSingleton<DigitalLinkConverter>();
         builder.Services.AddSingleton<IdentifierConverter>();

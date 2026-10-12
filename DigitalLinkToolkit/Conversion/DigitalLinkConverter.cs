@@ -9,7 +9,7 @@ using System.Web;
 
 namespace DigitalLinkToolkit.Conversion;
 
-public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, ApplicationIdentifiers identifiers, TdTEngine translationEngine) 
+public sealed class DigitalLinkConverter(ApplicationIdentifiers identifiers, TdTEngine translationEngine) 
 {
     public DigitalLink Parse(HttpRequest request)
     {
@@ -55,7 +55,7 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
         {
             var value = keyValuePair.Get(key) ?? string.Empty;
 
-            if (identifiers.TryGet(key!, out var ai) && ai.Type is AIType.DataAttribute)
+            if (identifiers.TryGetIdentifier(key!, out var ai) && ai.Type is AIType.DataAttribute)
             {
                 builder.RegisterAI(ComponentConverter.Parse(ai, value));
             }
@@ -79,7 +79,7 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
 
         for (var i = 1; i < parts.Length; i += 2)
         {
-            if (identifiers.TryGet(parts[^(i + 1)], out var ai) && ai.Type is AIType.PrimaryKey or AIType.Qualifier)
+            if (identifiers.TryGetIdentifier(parts[^(i + 1)], out var ai) && ai.Type is AIType.PrimaryKey or AIType.Qualifier)
             {
                 ais.Add(ComponentConverter.Parse(ai, parts[^i]));
 
@@ -104,7 +104,7 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
             // Review if logic can be simplified
             if (!decompressedValue.HasPrimaryKey)
             {
-                if (parts.Length >= 3 && identifiers.TryGet(parts[^3], out var key) && key.Type is AIType.PrimaryKey)
+                if (parts.Length >= 3 && identifiers.TryGetIdentifier(parts[^3], out var key) && key.Type is AIType.PrimaryKey)
                 {
                     builder.RegisterAI(ComponentConverter.Parse(key, parts[^2]));
                 }
@@ -167,7 +167,7 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
             }
             else if (!current.IsNumeric())
             {
-                if (!optimizationCodes.TryGet(current.ToString("X2"), out var optimizedAis))
+                if (!identifiers.TryGetOptimizationCode(current.ToString("X2"), out var optimizedAis))
                 {
                     builder.RegisterError(ErrorCodes.InvalidInput, "Input string is not a valid DigitalLink URL");
                     return false;
@@ -223,7 +223,7 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
 
     private void ParseApplicationIdentifier(string code, Bitstream inputStream, DigitalLinkBuilder builder)
     {
-        if (identifiers.TryGet(code, out var ai))
+        if (identifiers.TryGetIdentifier(code, out var ai))
         {
             var result = new List<Component>();
             var value = string.Empty;
@@ -288,13 +288,13 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
         var resultBuffer = new StringBuilder();
         var compressedBuffer = new StringBuilder();
 
-        if (optimizationCodes.TryGetMatching(ais.Select(x => x.Key.Code), out var optimization))
+        if (identifiers.TryGetMatchingOptimizationCode(ais.Select(x => x.Key.Code), out var optimization))
         {
             compressedBuffer.Append(Alphabets.GetAlphaBinary(optimization.Code));
 
             foreach (var element in optimization.SequenceAIs)
             {
-                if (identifiers.TryGet(element, out var applicationIdentifier))
+                if (identifiers.TryGetIdentifier(element, out var applicationIdentifier))
                 {
                     var entry = ais.Single(a => a.Key.Code == element);
                     var remaining = entry.Value;
@@ -329,7 +329,7 @@ public sealed class DigitalLinkConverter(OptimizationCodes optimizationCodes, Ap
             uncompressedQueryStrings.Add($"{key}={Uri.EscapeDataString(value ?? string.Empty)}");
         }
 
-        compressedBuffer.Append(new string('0', (6 - compressedBuffer.Length % 6) % 6));
+        compressedBuffer.Append('0', (6 - compressedBuffer.Length % 6) % 6);
         resultBuffer.Append(compressedBuffer.GetChars());
 
         if (uncompressedQueryStrings.Count > 0)

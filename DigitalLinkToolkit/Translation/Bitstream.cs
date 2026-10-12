@@ -22,13 +22,6 @@ public sealed class Bitstream(string remaining)
         return true;
     }
 
-    public string ReadUntil(int bitNumber)
-    {
-        var toRead = remaining.Length - _position > bitNumber ? bitNumber : remaining.Length - _position;
-
-        return Read(toRead);
-    }
-
     public string Read(int bitNumber)
     {
         ArgumentOutOfRangeException.ThrowIfGreaterThan(_position + bitNumber, remaining.Length, nameof(bitNumber));

@@ -274,7 +274,7 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
 
         if (bitstream.Remaining >= 8)
         {
-            var value = Convert.ToByte(bitstream.ReadUntil(8), 2);
+            var value = Convert.ToByte(bitstream.Read(8), 2);
 
             if(value >> 4 <= 9 && (value & 0x0F) <= 9)
             {
@@ -287,7 +287,9 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
 
                 for (var i = 2; i < length; i++)
                 {
-                    var encodedChar = bitstream.ReadUntil(4);
+                    if (bitstream.Remaining < 4) return false;
+
+                    var encodedChar = bitstream.Read(4);
                     var remain = Convert.ToByte(encodedChar, 2);
 
                     code += remain.ToString("X1");
@@ -319,8 +321,8 @@ public sealed class TdTEngine(List<Scheme> schemes, List<Table> tables)
         if(field.BitPadDir is not null)
         {
             value = field.BitPadDir is Direction.Left
-                ? value.TrimStart((field.PadChar ?? "0").ElementAt(0))
-                : value.TrimEnd((field.PadChar ?? "0").ElementAt(0));
+                ? value.TrimStart(field.PadChar ?? '0')
+                : value.TrimEnd(field.PadChar ?? '0');
         }
 
         string parsedValue;

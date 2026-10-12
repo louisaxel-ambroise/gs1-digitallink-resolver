@@ -107,8 +107,8 @@ internal sealed class GrammarFormatter(List<Table> tables)
                 if(formatted.Length < field.BitLength)
                 {
                     formatted = field.BitPadDir == Direction.Left
-                        ? formatted.PadLeft(field.BitLength.Value, (field.PadChar ?? "0").ElementAt(0))
-                        : formatted.PadRight(field.BitLength.Value, (field.PadChar ?? "0").ElementAt(0));
+                        ? formatted.PadLeft(field.BitLength.Value, field.PadChar ?? '0')
+                        : formatted.PadRight(field.BitLength.Value, field.PadChar ?? '0');
                 }
 
                 return formatted;
