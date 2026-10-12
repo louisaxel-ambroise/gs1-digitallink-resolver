@@ -26,7 +26,7 @@ public sealed class ResolverController
         var anchors = context.AnchorsForLink(digitalLink).ToList();
         var linksets = anchors.Select(a => new LinksetResultAnchor
         {
-            Anchor = string.Join('/', digitalLink.HostUrl, a.Prefix),
+            Anchor = string.Join('/', digitalLink.HostUrl, a.Prefix).TrimEnd('/'),
             Description = a.Description,
             Links = a.Links.Map(digitalLink)
         }).ToList();
@@ -64,7 +64,7 @@ public sealed class ResolverController
                 return new MultipleChoicesObjectResult(new ResolutionResult
                 {
                     Description = anchor.Description,
-                    Anchor = string.Join('/', digitalLink.HostUrl, anchor.Prefix),
+                    Anchor = string.Join('/', digitalLink.HostUrl, anchor.Prefix).TrimEnd('/'),
                     Links = links
                 });
             }

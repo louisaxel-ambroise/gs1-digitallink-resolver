@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<!-- see https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management -->
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageVersion Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.13" />
+		<PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.12" />
+		<PackageVersion Include="Tavis.UriTemplates" Version="2.0.0" />
+		<PackageVersion Include="Sqids" Version="3.2.1" />
+		<PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.12" />
+		<PackageVersion Include="MSTest" Version="4.4.0" />
+	</ItemGroup>
+</Project>

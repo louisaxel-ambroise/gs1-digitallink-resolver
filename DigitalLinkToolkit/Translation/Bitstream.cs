@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace DigitalLinkToolkit.Translation;
+﻿namespace DigitalLinkToolkit.Translation;
 
 public sealed class Bitstream(string remaining)
 {

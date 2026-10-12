@@ -2,10 +2,7 @@
 using Goto.Infrastructure.Authentication;
 using Goto.Services.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
