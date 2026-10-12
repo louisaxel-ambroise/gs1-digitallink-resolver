@@ -24,9 +24,5 @@ public sealed class FromUriModelBinder : IModelBinder
         {
             bindingContext.Result = ModelBindingResult.Success(new Uri(request.GetDisplayUrl()));
         }
-        else
-        {
-            bindingContext.Result = ModelBindingResult.Failed();
-        }
     }
 }

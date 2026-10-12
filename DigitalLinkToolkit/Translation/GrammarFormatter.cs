@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DigitalLinkToolkit.Translation;
 
-public sealed class GrammarFormatter(List<Table> tables)
+internal sealed class GrammarFormatter(List<Table> tables)
 {
     internal string Format(Option option, Dictionary<string, string> parameters)
     {

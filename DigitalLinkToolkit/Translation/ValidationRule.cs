@@ -8,7 +8,7 @@ internal static class ValidationRule
         if (input.TrimStart('0').Length < minValue.TrimStart('0').Length) return false;
 
         for (var i = 0; i < minValue.Length; i++)
-            {
+        {
             if (input[i] < minValue[i]) return false;
         }
 
