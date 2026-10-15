@@ -79,7 +79,7 @@ public static class DependencyInjectionExtensions
             options.ViewLocationFormats.Clear();
             options.ViewLocationFormats.Add("/Infrastructure/Views/{1}/{0}" + RazorViewEngine.ViewExtension);
         });
-        builder.Services.Configure<RequestLocalizationOptions>(opt => opt.AddSupportedUICultures("en", "fr", "nl", "de", "ar"));
+        builder.Services.Configure<RequestLocalizationOptions>(opt => opt.AddSupportedUICultures("en", "fr", "nl", "de", "ar", "es"));
         builder.Services.AddAuthentication("ApiKey").AddScheme<ApiKeyAuthenticationSchemeOptions, ApiKeyAuthenticationSchemeHandler>("ApiKey", opts => opts.ApiKey = builder.Configuration.GetValue<string>("ApiKey"));
         builder.Services.AddCors(opt => opt.AddDefaultPolicy(p => p.AllowAnyHeader().AllowAnyOrigin().WithMethods("GET", "HEAD", "OPTIONS")));
         builder.Services.AddLocalization();
