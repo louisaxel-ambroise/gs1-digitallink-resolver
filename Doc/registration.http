@@ -13,7 +13,9 @@ Content-Type: application/json
 X-Api-Key: {{apiKey}}
 {
   "prefix": "01/05414196535263",
-  "description": "Product description"
+  "description": { 
+    "en":"Product description" 
+  }
 }
 
 ### Update description of an anchor
@@ -21,7 +23,12 @@ PUT {{baseUrl}}/api/anchors/qTFrufVwob
 Content-Type: application/json
 X-Api-Key: {{apiKey}}
 {
-  "description": "This is an updated desc twice"
+  "description": {
+    "en": "Product description", 
+    "ar": "وصف المنتج", 
+    "fr": "Description du produit",
+    "nl": "Productbeschrijving" 
+  }
 }
 
 ### Get details of an anchor

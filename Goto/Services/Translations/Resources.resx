@@ -354,6 +354,9 @@
   <data name="Multiple links are available for this resource" xml:space="preserve">
     <value>Multiple links are available for this resource</value>
   </data>
+  <data name="No description provided" xml:space="preserve">
+    <value>No description provided</value>
+  </data>
   <data name="No links configured for this resource" xml:space="preserve">
     <value>No links configured for this resource</value>
   </data>

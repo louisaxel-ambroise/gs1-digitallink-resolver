@@ -31,7 +31,7 @@ public sealed class AnchorController(Context context, Clock clock, ClaimsPrincip
                 Id = encoder.Encode(a.Id),
                 CompanyPrefix = a.CompanyPrefix,
                 Prefix = a.Prefix,
-                Description = a.Description
+                Description = a.Description.GetTranslations()
             });
 
         return new OkObjectResult(new AnchorListResult { Anchors = [.. anchors] });
@@ -45,7 +45,7 @@ public sealed class AnchorController(Context context, Clock clock, ClaimsPrincip
         {
             Prefix = identifier.Value,
             CompanyPrefix = principal.GetCompanyPrefix(),
-            Description = request.Description
+            Description = new(request.Description)
         };
         context.Add(anchor);
 
@@ -58,7 +58,7 @@ public sealed class AnchorController(Context context, Clock clock, ClaimsPrincip
         var anchorId = encoder.Decode(anchorKey).Single();
         var anchor = context.AnchorsForUser(principal).First(a => a.Id == anchorId);
 
-        anchor.Description = request.Description;
+        anchor.Description = new(request.Description);
 
         return new NoContentResult();
     }
@@ -87,7 +87,7 @@ public sealed class AnchorController(Context context, Clock clock, ClaimsPrincip
         {
             Id = encoder.Encode(anchor.Id),
             Prefix = anchor.Prefix,
-            Description = anchor.Description,
+            Description = anchor.Description.GetTranslations(),
             Links = anchor.Links.OrderBy(l => l.Id)
                 .Select(l => new AnchorLinkResult
                 {

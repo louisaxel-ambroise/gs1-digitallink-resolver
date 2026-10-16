@@ -66,7 +66,7 @@ public static class TestDataProvider
         {
             yield return new Anchor
             {
-                Description = new("Test anchor 1"),
+            Description = new (new (){{ new("en"), "test anchor 1" } }),
                 Prefix = new("01/05414195535264"),
                 CompanyPrefix = new("5414195"),
                 Links =
@@ -96,7 +96,7 @@ public static class TestDataProvider
 
             yield return new Anchor
             {
-                Description = new("Test anchor 1"),
+                Description = new (new (){{ new("en"), "test anchor 1" } }),
                 Prefix = new("01"),
                 CompanyPrefix = new("5414195"),
                 Links =
@@ -117,7 +117,7 @@ public static class TestDataProvider
 
             yield return new Anchor
             {
-                Description = new("Test anchor 2"),
+                Description = new (new (){{ new("en"), "test anchor 2" } }),
                 Prefix = new("01/04047111050247"),
                 CompanyPrefix = new("4047111"),
                 Links =

@@ -15,7 +15,7 @@
     var anchorLinksByType = linkset.Links.GroupBy(l => l.LinkType);
 
     <header>
-        <h2>@linkset.Description</h2>
+        <h2>@(linkset.Description ?? Localizer["No description provided"])</h2>
         <p class="anchor">@linkset.Anchor</p>
     </header>
     <section>
@@ -81,7 +81,7 @@
                         <dd><a href="@Model.LinksetUrl" title="@Model.LinksetUrl" target="_blank">@Model.LinksetUrl</a></dd>
 
                         <dt>@Localizer["Title"]</dt>
-                        <dd>Linkset</dd>
+                        <dd>@Localizer["Linkset"]</dd>
                     </dl>
                 }
             </details>

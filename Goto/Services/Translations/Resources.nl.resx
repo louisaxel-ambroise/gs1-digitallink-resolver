@@ -354,6 +354,9 @@
   <data name="Multiple links are available for this resource" xml:space="preserve">
     <value>Er zijn meerdere links beschikbaar voor deze bron</value>
   </data>
+  <data name="No description provided" xml:space="preserve">
+    <value>Er is geen beschrijving opgegeven</value>
+  </data>
   <data name="No links configured for this resource" xml:space="preserve">
     <value>Geen links geconfigureerd voor deze bron</value>
   </data>

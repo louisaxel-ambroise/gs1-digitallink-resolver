@@ -12,6 +12,12 @@ internal class FromHeaderModelBinder : IModelBinder
         if (bindingContext.ModelType == typeof(Language[]))
         {
             var header = request.GetTypedHeaders().AcceptLanguage;
+
+            if (request.Query.TryGetValue("culture", out var queryCulture)) 
+            {
+                header.Insert(0, new(queryCulture.Last(), 1.0));
+            }
+
             var languages = header.OrderByDescending(h => h.Quality ?? 1)
                 .Select(v => Language.Parse(v.Value.ToString()))
                 .ToArray();
