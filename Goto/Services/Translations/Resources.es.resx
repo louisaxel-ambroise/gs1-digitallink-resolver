@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dark" xml:space="preserve">
+    <value>Oscuro</value>
+  </data>
+  <data name="Details of the error" xml:space="preserve">
+    <value>Detalles del error</value>
+  </data>
+  <data name="DuplicateAI" xml:space="preserve">
+    <value>Hay un valor de IA duplicado</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="gs1:activityIdeas" xml:space="preserve">
+    <value>Ideas de actividades</value>
+  </data>
+  <data name="gs1:allergenInfo" xml:space="preserve">
+    <value>Información sobre alérgenos</value>
+  </data>
+  <data name="gs1:appDownload" xml:space="preserve">
+    <value>Descarga de la aplicación</value>
+  </data>
+  <data name="gs1:backgroundInfo" xml:space="preserve">
+    <value>Información general</value>
+  </data>
+  <data name="gs1:brandHomepageClinical" xml:space="preserve">
+    <value>Información sobre la marca (profesionales)</value>
+  </data>
+  <data name="gs1:brandHomepagePatient" xml:space="preserve">
+    <value>Información sobre la marca (pacientes)</value>
+  </data>
+  <data name="gs1:careersInfo" xml:space="preserve">
+    <value>Información sobre empleo</value>
+  </data>
+  <data name="gs1:certificationInfo" xml:space="preserve">
+    <value>Información sobre certificación</value>
+  </data>
+  <data name="gs1:consumerHandlingStorageInfo" xml:space="preserve">
+    <value>Información para el consumidor sobre manipulación y almacenamiento</value>
+  </data>
+  <data name="gs1:defaultLink" xml:space="preserve">
+    <value>Enlace predeterminado</value>
+  </data>
+  <data name="gs1:defaultLinkMulti" xml:space="preserve">
+    <value>Enlaces predeterminados</value>
+  </data>
+  <data name="gs1:dpp" xml:space="preserve">
+    <value>Producto «Digital Passport»</value>
+  </data>
+  <data name="gs1:eifu" xml:space="preserve">
+    <value>Instrucciones de uso electrónicas</value>
+  </data>
+  <data name="gs1:epcis" xml:space="preserve">
+    <value>EPCIS</value>
+  </data>
+  <data name="gs1:epil" xml:space="preserve">
+    <value>Folleto electrónico de información para el paciente</value>
+  </data>
+  <data name="gs1:eventsInfo" xml:space="preserve">
+    <value>Información sobre eventos</value>
+  </data>
+  <data name="gs1:faqs" xml:space="preserve">
+    <value>Preguntas frecuentes</value>
+  </data>
+  <data name="gs1:handledBy" xml:space="preserve">
+    <value>Gestionado por</value>
+  </data>
+  <data name="gs1:hasRetailers" xml:space="preserve">
+    <value>Tiene distribuidores</value>
+  </data>
+  <data name="gs1:homepage" xml:space="preserve">
+    <value>Página de información de la organización</value>
+  </data>
+  <data name="gs1:ingredientsInfo" xml:space="preserve">
+    <value>Información sobre ingredientes</value>
+  </data>
+  <data name="gs1:instructions" xml:space="preserve">
+    <value>Instrucciones</value>
+  </data>
+  <data name="gs1:jws" xml:space="preserve">
+    <value>Firma web JSON</value>
+  </data>
+  <data name="gs1:leaveReview" xml:space="preserve">
+    <value>Deja una opinión</value>
+  </data>
+  <data name="gs1:locationInfo" xml:space="preserve">
+    <value>Información de ubicación</value>
+  </data>
+  <data name="gs1:logisticsInfo" xml:space="preserve">
+    <value>Información logística</value>
+  </data>
+  <data name="gs1:loyaltyProgram" xml:space="preserve">
+    <value>Programa de fidelización</value>
+  </data>
+  <data name="gs1:masterData" xml:space="preserve">
+    <value>Datos maestros</value>
+  </data>
+  <data name="gs1:menuInfo" xml:space="preserve">
+    <value>Información del menú</value>
+  </data>
+  <data name="gs1:nutritionalInfo" xml:space="preserve">
+    <value>Información nutricional</value>
+  </data>
+  <data name="gs1:openingHoursInfo" xml:space="preserve">
+    <value>Información sobre horarios de apertura</value>
+  </data>
+  <data name="gs1:paymentLink" xml:space="preserve">
+    <value>Realizar pago</value>
+  </data>
+  <data name="gs1:pip" xml:space="preserve">
+    <value>Información del producto</value>
+  </data>
+  <data name="gs1:productSustainabilityInfo" xml:space="preserve">
+    <value>Sostenibilidad y reciclaje</value>
+  </data>
+  <data name="gs1:promotion" xml:space="preserve">
+    <value>Promoción</value>
+  </data>
+  <data name="gs1:purchaseSuppliesOrAccessories" xml:space="preserve">
+    <value>Comprar suministros o accesorios</value>
+  </data>
+  <data name="gs1:quickStartGuide" xml:space="preserve">
+    <value>Guía de inicio rápido</value>
+  </data>
+  <data name="gs1:recallStatus" xml:space="preserve">
+    <value>Estado de la retirada del mercado</value>
+  </data>
+  <data name="gs1:recipeInfo" xml:space="preserve">
+    <value>Página web de recetas</value>
+  </data>
+  <data name="gs1:registerProduct" xml:space="preserve">
+    <value>Registrar compra</value>
+  </data>
+  <data name="gs1:registryEntry" xml:space="preserve">
+    <value>Inscripción en un registro</value>
+  </data>
+  <data name="gs1:relatedImage" xml:space="preserve">
+    <value>Imagen relacionada</value>
+  </data>
+  <data name="gs1:relatedVideo" xml:space="preserve">
+    <value>Vídeo relacionado</value>
+  </data>
+  <data name="gs1:reportFound" xml:space="preserve">
+    <value>Se ha encontrado un informe</value>
+  </data>
+  <data name="gs1:review" xml:space="preserve">
+    <value>Opiniones</value>
+  </data>
+  <data name="gs1:safetyInfo" xml:space="preserve">
+    <value>Información de seguridad</value>
+  </data>
+  <data name="gs1:scheduleTime" xml:space="preserve">
+    <value>Programación/Reserva</value>
+  </data>
+  <data name="gs1:serviceInfo" xml:space="preserve">
+    <value>Información del servicio</value>
+  </data>
+  <data name="gs1:smartLabel" xml:space="preserve">
+    <value>SmartLabel</value>
+  </data>
+  <data name="gs1:smpc" xml:space="preserve">
+    <value>Resumen de las características del producto</value>
+  </data>
+  <data name="gs1:socialMedia" xml:space="preserve">
+    <value>Redes sociales</value>
+  </data>
+  <data name="gs1:statisticInfo" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
+  <data name="gs1:subscribe" xml:space="preserve">
+    <value>Suscribirse</value>
+  </data>
+  <data name="gs1:support" xml:space="preserve">
+    <value>Asistencia</value>
+  </data>
+  <data name="gs1:sustainabilityInfo" xml:space="preserve">
+    <value>Sostenibilidad y reciclaje</value>
+  </data>
+  <data name="gs1:traceability" xml:space="preserve">
+    <value>Información de trazabilidad</value>
+  </data>
+  <data name="gs1:tutorial" xml:space="preserve">
+    <value>Tutorial</value>
+  </data>
+  <data name="gs1:userAgreement" xml:space="preserve">
+    <value>Firmar renuncia/acuerdo/documento</value>
+  </data>
+  <data name="gs1:verificationService" xml:space="preserve">
+    <value>Servicio de verificación</value>
+  </data>
+  <data name="gs1:whatsInTheBox" xml:space="preserve">
+    <value>¿Qué incluye el paquete?</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Error interno</value>
+  </data>
+  <data name="InvalidAIValue" xml:space="preserve">
+    <value>El valor no coincide con el patrón de IA</value>
+  </data>
+  <data name="InvalidCheckDigit" xml:space="preserve">
+    <value>El dígito de control no es válido</value>
+  </data>
+  <data name="InvalidCompanyPrefix" xml:space="preserve">
+    <value>El prefijo de la empresa no es válido</value>
+  </data>
+  <data name="InvalidInput" xml:space="preserve">
+    <value>El enlace digital proporcionado no es válido</value>
+  </data>
+  <data name="Language(s)" xml:space="preserve">
+    <value>Idioma(s)</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Luz</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Enlace</value>
+  </data>
+  <data name="Links for Anchor" xml:space="preserve">
+    <value>Enlaces para Anchor</value>
+  </data>
+  <data name="Linkset" xml:space="preserve">
+    <value>Conjunto de enlaces</value>
+  </data>
+  <data name="Linkset for this resource" xml:space="preserve">
+    <value>Conjunto de enlaces para este recurso</value>
+  </data>
+  <data name="Media Type" xml:space="preserve">
+    <value>Tipo de medio</value>
+  </data>
+  <data name="Multiple choices available" xml:space="preserve">
+    <value>Hay varias opciones disponibles</value>
+  </data>
+  <data name="Multiple links are available for this resource" xml:space="preserve">
+    <value>Hay varios enlaces disponibles para este recurso</value>
+  </data>
+  <data name="No description provided" xml:space="preserve">
+    <value>No se ha facilitado ninguna descripción</value>
+  </data>
+  <data name="No links configured for this resource" xml:space="preserve">
+    <value>No hay enlaces configurados para este recurso</value>
+  </data>
+  <data name="NoCompanyPrefix" xml:space="preserve">
+    <value>Ningún componente contiene un valor GCP</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>No encontrado</value>
+  </data>
+  <data name="The provided digital link is invalid" xml:space="preserve">
+    <value>El enlace digital proporcionado no es válido</value>
+  </data>
+  <data name="The request specified an invalid DigitalLink" xml:space="preserve">
+    <value>La solicitud ha especificado un DigitalLink no válido</value>
+  </data>
+  <data name="Theme:" xml:space="preserve">
+    <value>Tema:</value>
+  </data>
+  <data name="There is no entry configured for the specified request" xml:space="preserve">
+    <value>No hay ninguna entrada configurada para la solicitud especificada</value>
+  </data>
+  <data name="This request should not be retried." xml:space="preserve">
+    <value>No se debe volver a intentar esta solicitud.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="Unable to process the request" xml:space="preserve">
+    <value>No se ha podido procesar la solicitud</value>
+  </data>
+  <data name="UnknownAI" xml:space="preserve">
+    <value>Hay una IA desconocida</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenida</value>
+  </data>
+  <data name="Your GOTO resolver is up and running!" xml:space="preserve">
+    <value>¡Tu resolutor GOTO ya está en funcionamiento!</value>
+  </data>
+</root>
