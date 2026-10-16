@@ -71,15 +71,15 @@ public class AnchorTests
         var sut = new Anchor
         {
             CompanyPrefix = "123456",
-            Description = "test 123456",
+            Description = new (new (){{ new("en-GB"), "test 123456" } }),
             Prefix = "01/123456789",
-            Links = Links.Where(l => l.LinkType == new LinkType("gs1:pip")).ToList()
+            Links = [.. Links.Where(l => l.LinkType == new LinkType("gs1:pip"))]
         };
 
         var result = sut.FindBestMatches([new("en-US")], [new("image/png")]);
 
         Assert.HasCount(1, result);
-        CollectionAssert.AreEquivalent(new[] { sut.Links[1] }, result);
+        Assert.AreSequenceEqual([sut.Links[1]], result);
     }
 
     [TestMethod]
@@ -88,14 +88,14 @@ public class AnchorTests
         var sut = new Anchor
         {
             CompanyPrefix = "123456",
-            Description = "test 123456",
+            Description = new (new (){{ new("en-GB"), "test 123456" } }),
             Prefix = "01/123456789",
-            Links = Links.Where(l => l.LinkType == new LinkType("gs1:relatedVideo")).ToList()
+            Links = [.. Links.Where(l => l.LinkType == new LinkType("gs1:relatedVideo"))]
         };
 
         var result = sut.FindBestMatches([new("hr-HR")], [new("application/json")]);
 
-        Assert.HasCount(0, result);
+        Assert.IsEmpty(result);
     }
 
     [TestMethod]
@@ -104,15 +104,15 @@ public class AnchorTests
         var sut = new Anchor
         {
             CompanyPrefix = "123456",
-            Description = "test 123456",
+            Description = new (new (){{ new("en-GB"), "test 123456" } }),
             Prefix = "01/123456789",
-            Links = Links.Where(l => l.LinkType == new LinkType("gs1:pip")).ToList()
+            Links = [.. Links.Where(l => l.LinkType == new LinkType("gs1:pip"))]
         };
 
         var result = sut.FindBestMatches([new("hr-HR")], [new("image/png")]);
 
         Assert.HasCount(2, result);
-        CollectionAssert.AreEquivalent(new[] { sut.Links[0], sut.Links[2] }, result);
+        Assert.AreSequenceEqual([sut.Links[0], sut.Links[2]], result);
     }
 
     [TestMethod]
@@ -121,15 +121,15 @@ public class AnchorTests
         var sut = new Anchor
         {
             CompanyPrefix = "123456",
-            Description = "test 123456",
+            Description = new (new (){{ new("en-GB"), "test 123456" } }),
             Prefix = "01/123456789",
-            Links = Links.Where(l => l.LinkType == new LinkType("gs1:pip")).ToList()
+            Links = [.. Links.Where(l => l.LinkType == new LinkType("gs1:pip"))]
         };
 
         var result = sut.FindBestMatches([new("en")], [new("application/json")]);
 
         Assert.HasCount(2, result);
-        CollectionAssert.AreEquivalent(new[] { sut.Links[0], sut.Links[1] }, result);
+        Assert.AreSequenceEqual([sut.Links[1], sut.Links[0]], result);
         Assert.AreSame(sut.Links[1], result[0]);
     }
 
@@ -139,9 +139,9 @@ public class AnchorTests
         var sut = new Anchor
         {
             CompanyPrefix = "123456",
-            Description = "test 123456",
+            Description = new (new (){{ new("en-GB"), "test 123456" } }),
             Prefix = "01/123456789",
-            Links = Links.Where(l => l.LinkType == new LinkType("gs1:pip")).ToList()
+            Links = [.. Links.Where(l => l.LinkType == new LinkType("gs1:pip"))]
         };
 
         var result = sut.FindBestMatches([new("en")], [new("application/json")]);

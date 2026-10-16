@@ -7,7 +7,7 @@ public sealed class Anchor
     public int Id { get; set; }
     public required string Prefix { get; set; }
     public required string CompanyPrefix { get; set; }
-    public required string Description { get; set; }
+    public required L10nText Description { get; set; }
     public List<AnchorLink> Links { get; set; } = [];
 
     public List<AnchorLink> FindBestMatches(Language[] languages, MediaType[] mediaTypes)

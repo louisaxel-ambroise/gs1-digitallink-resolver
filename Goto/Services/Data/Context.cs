@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Goto.Services.Data;
 
@@ -48,7 +50,7 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
         var anchor = modelBuilder.Entity<Anchor>();
         anchor.HasKey(a => a.Id);
         anchor.Property(a => a.Prefix).HasMaxLength(255).IsRequired();
-        anchor.Property(a => a.Description).IsRequired();
+        anchor.Property(a => a.Description).IsRequired().HasConversion(x => JsonSerializer.Serialize(x.GetTranslations().ToDictionary(kv => kv.Key.ToString(), kv => kv.Value)), x => new(JsonSerializer.Deserialize<Dictionary<string, string>>(x)));
         anchor.HasIndex(a => new { a.CompanyPrefix, a.Prefix }).IsUnique();
         anchor.HasMany(a => a.Links).WithOne().HasForeignKey(l => l.AnchorId);
         anchor.Navigation(a => a.Links).AutoInclude();

@@ -9,7 +9,7 @@ public sealed class LinksetResult
 public sealed class LinksetResultAnchor
 {
     public required string Anchor { get; init; }
-    public required string Description { get; init; }
+    public required string? Description { get; init; }
     public required IEnumerable<LinksetLink> Links { get; init; } = [];
 }
 

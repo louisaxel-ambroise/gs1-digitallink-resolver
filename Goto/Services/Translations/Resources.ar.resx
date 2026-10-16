@@ -354,6 +354,9 @@
   <data name="Multiple links are available for this resource" xml:space="preserve">
     <value>تتوفر روابط متعددة لهذا المورد</value>
   </data>
+  <data name="No description provided" xml:space="preserve">
+    <value>لم يتم تقديم أي وصف</value>
+  </data>
   <data name="No links configured for this resource" xml:space="preserve">
     <value>لا توجد روابط مكونة لهذا المورد</value>
   </data>

@@ -21,13 +21,16 @@ public sealed class ResolverController
 {
     [LinksetResolverRoute]
     [Produces(MediaType.Linkset, MediaType.Html)]
-    public IActionResult ResolveLinkset([FromUri] DigitalLink digitalLink, [FromServices] Context context)
+    public IActionResult ResolveLinkset(
+        [FromUri] DigitalLink digitalLink,
+        [FromHeader] Language[] languages,
+        [FromServices] Context context)
     {
         var anchors = context.AnchorsForLink(digitalLink).ToList();
         var linksets = anchors.Select(a => new LinksetResultAnchor
         {
             Anchor = string.Join('/', digitalLink.HostUrl, a.Prefix).TrimEnd('/'),
-            Description = a.Description,
+            Description = a.Description.Localize(languages),
             Links = a.Links.Map(digitalLink)
         }).ToList();
 
@@ -63,7 +66,7 @@ public sealed class ResolverController
             {
                 return new MultipleChoicesObjectResult(new ResolutionResult
                 {
-                    Description = anchor.Description,
+                    Description = anchor.Description.Localize(languages),
                     Anchor = string.Join('/', digitalLink.HostUrl, anchor.Prefix).TrimEnd('/'),
                     Links = links
                 });

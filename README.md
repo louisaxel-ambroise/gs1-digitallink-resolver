@@ -36,7 +36,10 @@ Registeration of an Anchor:
 ```sh
 curl -X POST "https://id.goto.it.com/api/anchor" -H "Content-Type: application/json" -H "X-Api-Key: {your_api_key}" -d '{
   "prefix": "/01/09506000134352",
-  "description":"My product description"
+  "description": {
+	"en": "My product description",
+	"fr": "Description de mon produit"
+  }
 }'
 ```
 

@@ -21,7 +21,7 @@ public static class ResolverControllerTests
         {
             var context = TestDataProvider.CreateContext();
             var digitalLink = new DigitalLink() { AIs = [new KeyValue { Key = new() { Type = AIType.PrimaryKey, Code = "01" }, Value = "undefined", Issues = [] }], CompanyPrefix = "654321", HostUrl = "https://test.com", QueryString = [] };
-            var result = Controller.ResolveLinkset(digitalLink, context);
+            var result = Controller.ResolveLinkset(digitalLink, [new("en-GB")], context);
 
             Assert.IsInstanceOfType<NotFoundObjectResult>(result);
         }
@@ -31,12 +31,12 @@ public static class ResolverControllerTests
         {
             var context = TestDataProvider.CreateContext();
             var digitalLink = TestDataProvider.CreateDigitalLink("01/05414195535264/10/ABC", "5414195");
-            var result = Controller.ResolveLinkset(digitalLink, context);
+            var result = Controller.ResolveLinkset(digitalLink, [new("en-GB")], context);
 
             var okObjectResult = Assert.IsInstanceOfType<OkObjectResult>(result);
             var linksetResult = Assert.IsInstanceOfType<LinksetResult>(okObjectResult.Value);
 
-            Assert.AreEqual(2, linksetResult.Anchors.Count());
+            Assert.HasCount(2, linksetResult.Anchors);
         }
     }
 
