@@ -3,7 +3,7 @@
 @inject CommonLocalizationService Localizer
 @{
     Layout = "_Shared";
-    ViewData["Title"] = Localizer["Error"];
+    ViewData["Title"] = Localizer[Model.Title];
 }
 
 <h2>@Model.Status - @Localizer[Model.Title]</h2>

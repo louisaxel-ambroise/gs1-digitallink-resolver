@@ -327,8 +327,11 @@
   <data name="InvalidInput" xml:space="preserve">
     <value>De opgegeven digitale link is ongeldig</value>
   </data>
-  <data name="Language(s)" xml:space="preserve">
-    <value>Taal/talen</value>
+  <data name="Language" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Talen</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Helder</value>
@@ -363,7 +366,7 @@
   <data name="NoCompanyPrefix" xml:space="preserve">
     <value>Geen enkel onderdeel bevat een GCP-waarde</value>
   </data>
-  <data name="NotFound" xml:space="preserve">
+  <data name="Not Found" xml:space="preserve">
     <value>Niet gevonden</value>
   </data>
   <data name="The provided digital link is invalid" xml:space="preserve">

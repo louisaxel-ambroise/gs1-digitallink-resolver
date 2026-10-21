@@ -30,6 +30,8 @@
 
                 @foreach (var link in links)
                 {
+                    var hrefLang = link.SelectMany(l => l.Hreflang).Distinct().ToArray();
+
                     <dl>
                         <dt>@Localizer["Link"]</dt>
                         <dd><a href="@link.Key.Href" title="@link.Key.Href" target="_blank">@link.Key.Href</a></dd>
@@ -37,9 +39,9 @@
                         <dt>@Localizer["Title"]</dt>
                         <dd>@link.Key.Title</dd>
 
-                        <dt>@Localizer["Language(s)"]</dt>
+                        <dt>@Localizer[hrefLang.Length == 1 ? "Language" : "Languages"]</dt>
                         <dd>
-                            @foreach (var lang in link.SelectMany(l => l.Hreflang).Distinct())
+                            @foreach (var lang in hrefLang)
                             {
                                 <span class="tag language" title="@lang">@CultureInfo.GetCultureInfoByIetfLanguageTag(lang).DisplayName</span>
                             }

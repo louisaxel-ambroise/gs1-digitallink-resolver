@@ -8,7 +8,7 @@ public sealed class ErrorResponse
     public IEnumerable<ErrorDetail>? Errors { get; init; }
     public int Status { get; init; }
 
-    public static ErrorResponse InternalServerError = new()
+    public static ErrorResponse InternalServerError { get; } = new()
     {
         Status = StatusCodes.Status500InternalServerError,
         Type = "InternalServerError",
@@ -16,11 +16,11 @@ public sealed class ErrorResponse
         Detail = "Unable to process the request"
     };
 
-    public static ErrorResponse NotFound = new()
+    public static ErrorResponse NotFound { get; } = new()
     {
         Status = StatusCodes.Status404NotFound,
         Type = "NotFound",
-        Title = "Not found",
+        Title = "Not Found",
         Detail = "There is no entry configured for the specified request"
     };
 }

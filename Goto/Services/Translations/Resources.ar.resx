@@ -327,8 +327,11 @@
   <data name="InvalidInput" xml:space="preserve">
     <value>الرابط الرقمي المقدم غير صالح</value>
   </data>
-  <data name="Language(s)" xml:space="preserve">
-    <value>اللغة (اللغات)</value>
+  <data name="Language" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>اللغات</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>واضح</value>
@@ -363,7 +366,7 @@
   <data name="NoCompanyPrefix" xml:space="preserve">
     <value>لا يوجد مكون يحتوي على قيمة GCP</value>
   </data>
-  <data name="NotFound" xml:space="preserve">
+  <data name="Not Found" xml:space="preserve">
     <value>غير موجود</value>
   </data>
   <data name="The provided digital link is invalid" xml:space="preserve">
