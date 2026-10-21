@@ -4,6 +4,10 @@ namespace DigitalLinkToolkit.Translation.Functions;
 
 internal static class Alphabets
 {
+    private const string Alpha = "0123456789ABCDEF";
+    private const string Base64UrlSafe = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+    private const string Code40 = "_ABCDEFGHIJKLMNOPQRSTUVWXYZ-.:0123456789";
+
     public static char GetChar(ReadOnlySpan<char> input) => Base64UrlSafe.ElementAt(Convert.ToInt32(input.ToString(), 2));
     public static char GetAlpha(ReadOnlySpan<char> input) => Alpha.ElementAt(Convert.ToInt32(input.ToString(), 2));
     public static char GetAscii(ReadOnlySpan<char> input) => char.ConvertFromUtf32(Convert.ToInt32(input.ToString(), 2))[0];
@@ -14,10 +18,6 @@ internal static class Alphabets
     public static string GetAlphaBinary(char input) => Convert.ToString(Alpha.IndexOf(input, StringComparison.OrdinalIgnoreCase), 2).PadLeft(4, '0');
     public static string GetAsciiBinary(char input) => Convert.ToString(char.ConvertToUtf32(input.ToString(), 0), 2).PadLeft(7, '0');
     public static char GetCode40(int index) => Code40.ElementAt(index);
-    
-    private static readonly string Alpha = "0123456789ABCDEF";
-    private static readonly string Base64UrlSafe = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-    private static readonly string Code40 = "_ABCDEFGHIJKLMNOPQRSTUVWXYZ-.:0123456789";
 
     public static StringBuilder GetChars(this StringBuilder builder)
     {

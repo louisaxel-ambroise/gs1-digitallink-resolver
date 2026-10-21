@@ -327,8 +327,11 @@
   <data name="InvalidInput" xml:space="preserve">
     <value>Le DigitalLink fourni est invalide</value>
   </data>
-  <data name="Language(s)" xml:space="preserve">
-    <value>Langue(s)</value>
+  <data name="Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Langues</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Clair</value>
@@ -363,7 +366,7 @@
   <data name="NoCompanyPrefix" xml:space="preserve">
     <value>Aucun composant ne contient un préfix d'entreprise valide</value>
   </data>
-  <data name="NotFound" xml:space="preserve">
+  <data name="Not Found" xml:space="preserve">
     <value>Introuvable</value>
   </data>
   <data name="The provided digital link is invalid" xml:space="preserve">

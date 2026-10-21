@@ -327,8 +327,11 @@
   <data name="InvalidInput" xml:space="preserve">
     <value>El enlace digital proporcionado no es válido</value>
   </data>
-  <data name="Language(s)" xml:space="preserve">
-    <value>Idioma(s)</value>
+  <data name="Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Idiomas</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Luz</value>
@@ -363,7 +366,7 @@
   <data name="NoCompanyPrefix" xml:space="preserve">
     <value>Ningún componente contiene un valor GCP</value>
   </data>
-  <data name="NotFound" xml:space="preserve">
+  <data name="Not Found" xml:space="preserve">
     <value>No encontrado</value>
   </data>
   <data name="The provided digital link is invalid" xml:space="preserve">

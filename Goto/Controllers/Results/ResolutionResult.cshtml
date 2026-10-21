@@ -29,7 +29,7 @@
             <dt>@Localizer["Title"]</dt>
             <dd>@link.Title</dd>
 
-            <dt>@Localizer["Language(s)"]</dt>
+            <dt>@Localizer[link.Hreflang.Length == 1 ? "Language" : "Languages"]</dt>
             <dd>
                 @foreach (var lang in link.Hreflang)
                 {
