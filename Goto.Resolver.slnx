@@ -8,6 +8,7 @@
     <File Path=".filenesting.json" />
     <File Path="Directory.Packages.props" />
   </Folder>
+  <Project Path="DigitalLinkToolkit.Tests/DigitalLinkToolkit.Tests.csproj" Id="469228ba-8adf-4e43-bb95-0397841f6e9b" />
   <Project Path="DigitalLinkToolkit/DigitalLinkToolkit.csproj" />
   <Project Path="Goto.Tests/Goto.Tests.csproj" />
   <Project Path="Goto/Goto.csproj" />
