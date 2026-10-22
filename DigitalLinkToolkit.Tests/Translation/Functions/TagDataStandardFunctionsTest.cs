@@ -145,7 +145,7 @@ public static class TagDataStandardFunctionsTest
 
         [TestMethod]
         [DataRow("01001001001010010100", 1, 3, "9381")]
-        [DataRow("1010100011101111010010110", 2, 3, "1CD96")]
+        [DataRow("1010100011101111010010110", 2, 3, "1de96")]
         [DataRow("011101000111011110100101100101101000", 3, 3, "Hello")]
         public void ShouldWork(string bitStream, int encoding, int length, string expected)
         {
