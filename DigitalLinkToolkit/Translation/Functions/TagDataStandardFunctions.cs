@@ -311,7 +311,7 @@ public class TagDataStandardFunctions
             throw new Exception("Invalid day");
         }
 
-        return $"{year}{month}{day}";
+        return $"{year:D2}{month:D2}{day:D2}";
     }
 
     private static string ParseFixedLengthNumeric(Row row, Bitstream binaryInput)

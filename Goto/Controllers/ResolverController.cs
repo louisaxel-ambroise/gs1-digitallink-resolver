@@ -96,6 +96,6 @@ public sealed class ResolverController
         var bestMatch = anchor.FindBestMatches(languages, mediaTypes).Take(1);
         var defaultLink = ResolutionResultLink.Map(bestMatch, digitalLink).FirstOrDefault()?.Href ?? digitalLink.BuildLinksetLink();
 
-        return new RedirectResult(defaultLink, permanent: false, preserveMethod: true) ;
+        return new RedirectResult(defaultLink, permanent: false, preserveMethod: true);
     }
 }
