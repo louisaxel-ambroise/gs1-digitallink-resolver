@@ -63,7 +63,7 @@ public sealed class DigitalLink
 
         template.AddParameters(parameters);
 
-        return QueryHelpers.AddQueryString(template.Resolve(), QueryString.Where(qs => qs.Key != "linkType"));
+        return QueryHelpers.AddQueryString(template.Resolve(), QueryString.Where(qs => !ReservedQueryParams.Contains(qs.Key)));
     }
 
     private Dictionary<string, object> GetDigitalLinkParameters()
@@ -96,6 +96,8 @@ public sealed class DigitalLink
 
         return string.Concat(HostUrl, '/', path, '?', string.Join('&', query.Select(kv => $"{kv.Key}={kv.Value}")));
     }
+
+    private static string[] ReservedQueryParams => ["linkType", "culture"];
 }
 
 public sealed record KeyValue
