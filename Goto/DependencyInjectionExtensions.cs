@@ -23,10 +23,10 @@ public static class DependencyInjectionExtensions
 {
     public static WebApplicationBuilder RegisterDigitalLinkToolkit(this WebApplicationBuilder builder)
     {
-        var tdtEngineBuilder = new TdtEngineBuilder();
+        var tdtEngineBuilder = new TdTEngineBuilder();
 
-        tdtEngineBuilder = Directory.GetFiles("wwwroot/DefinitionFiles").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddDefinitionFile(file));
-        tdtEngineBuilder = Directory.GetFiles("wwwroot/Tables").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddTableFile(file));
+        tdtEngineBuilder = Directory.GetFiles("wwwroot/DefinitionFiles", "*.json").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddDefinitionFile(file));
+        tdtEngineBuilder = Directory.GetFiles("wwwroot/Tables", "*.json").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddTableFile(file));
 
         CompanyPrefix.Initialize("wwwroot/gcpprefixformatlist.xml");
         ApplicationIdentifiers.Initialize("wwwroot/ApplicationIdentifiers.json", new() { PropertyNameCaseInsensitive = true });

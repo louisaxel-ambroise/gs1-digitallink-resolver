@@ -4,14 +4,14 @@ using System.Text.Json;
 
 namespace DigitalLinkToolkit.Translation;
 
-public sealed class TdtEngineBuilder
+public sealed class TdTEngineBuilder
 {
     private readonly List<Scheme> _schemes = [];
     private readonly List<Table> _tables = [];
 
-    public TdtEngineBuilder AddDefinitionFile(string definitionFilePath) => AddDefinitionFile(File.OpenRead(definitionFilePath));
+    public TdTEngineBuilder AddDefinitionFile(string definitionFilePath) => AddDefinitionFile(File.OpenRead(definitionFilePath));
 
-    private TdtEngineBuilder AddDefinitionFile(FileStream fileStream)
+    private TdTEngineBuilder AddDefinitionFile(FileStream fileStream)
     {
         var deserialized = JsonSerializer.Deserialize<DefinitionFile>(fileStream) ?? throw new InvalidOperationException("Invalid definition file");
 
@@ -23,9 +23,9 @@ public sealed class TdtEngineBuilder
         return this;
     }
 
-    public TdtEngineBuilder AddTableFile(string tableFilePath) => AddTableFile(File.OpenRead(tableFilePath));
+    public TdTEngineBuilder AddTableFile(string tableFilePath) => AddTableFile(File.OpenRead(tableFilePath));
 
-    private TdtEngineBuilder AddTableFile(FileStream fileStream)
+    private TdTEngineBuilder AddTableFile(FileStream fileStream)
     {
         var deserialized = JsonSerializer.Deserialize<Table>(fileStream) ?? throw new InvalidOperationException("Invalid definition file");
         _tables.Add(deserialized);
