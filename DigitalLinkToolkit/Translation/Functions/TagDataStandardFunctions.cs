@@ -220,8 +220,8 @@ public class TagDataStandardFunctions
 
     private static string ParseCountryCode(Bitstream binaryInput)
     {
-        var first = 'A' + Convert.ToInt32(binaryInput.Read(6), 2);
-        var second = 'A' + Convert.ToInt32(binaryInput.Read(6), 2);
+        lvar first = Convert.ToChar('A' + Convert.ToInt32(binaryInput.Read(6), 2));
+        var second = Convert.ToChar('A' + Convert.ToInt32(binaryInput.Read(6), 2));
 
         return $"{first}{second}";
     }
