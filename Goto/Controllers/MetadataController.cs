@@ -1,5 +1,6 @@
 ﻿using Goto.Controllers.Results;
 using Goto.Infrastructure.Routing.Binding;
+using Goto.Services;
 using Goto.Services.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -18,7 +19,7 @@ public sealed class MetadataController
     {
         return new OkObjectResult(new MetadataResult
         {
-            ResolverRoot = string.Concat(metadataUrl.Scheme, "://", metadataUrl.Host),
+            ResolverRoot = metadataUrl.BaseUrl,
             Name = "GOTO v0.1",
             SupportedPrimaryKeys = ["all"],
             LinkTypeDefaultCanBeLinkset = true,

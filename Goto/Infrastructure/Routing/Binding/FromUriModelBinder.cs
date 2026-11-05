@@ -5,8 +5,16 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Goto.Infrastructure.Routing.Binding;
 
-public sealed class FromUriModelBinder : IModelBinder
+public sealed class FromUriModelBinder : IConditionalModelBinder
 {
+    private static readonly Type[] AcceptedTypes = [typeof(DigitalLink), typeof(Uri)];
+
+    public bool CanBind(ModelBinderProviderContext context)
+    {
+        return AcceptedTypes.Contains(context.Metadata.UnderlyingOrModelType)
+            && (context.BindingInfo.BindingSource?.CanAcceptDataFrom(BindingSource.Custom) ?? false);
+    }
+
     public async Task BindModelAsync(ModelBindingContext bindingContext)
     {
         var request = bindingContext.HttpContext.Request;
@@ -23,6 +31,10 @@ public sealed class FromUriModelBinder : IModelBinder
         else if (bindingContext.ModelType == typeof(Uri))
         {
             bindingContext.Result = ModelBindingResult.Success(new Uri(request.GetDisplayUrl()));
+        }
+        else
+        {
+            throw new InvalidOperationException();
         }
     }
 }

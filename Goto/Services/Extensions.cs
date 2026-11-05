@@ -29,4 +29,9 @@ public static class Extensions
     {
         public string GetCompanyPrefix() => principal.FindFirstValue("gs1:gcp") ?? throw new InvalidOperationException("Principal does not have company prefix claim");
     }
+
+    extension(Uri uri)
+    {
+        public string BaseUrl => string.Concat(uri.Scheme, "://", uri.Host, (uri.Port != 80 && uri.Port != 443) ? $":{uri.Port}" : "");
+    }
 }

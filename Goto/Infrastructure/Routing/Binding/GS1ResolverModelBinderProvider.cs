@@ -4,21 +4,14 @@ namespace Goto.Infrastructure.Routing.Binding;
 
 public sealed class GS1ResolverModelBinderProvider : IModelBinderProvider
 {
+    private static readonly IConditionalModelBinder[] ConditionalBinders = [
+        new FromUriModelBinder(),
+        new FromHeaderModelBinder(),
+        new FromQueryModelBinder()
+    ];
+
     public IModelBinder? GetBinder(ModelBinderProviderContext context)
     {
-        if (context.BindingInfo.BindingSource?.CanAcceptDataFrom(BindingSource.Custom) ?? false)
-        {
-            return new FromUriModelBinder();
-        }
-        if (context.BindingInfo.BindingSource?.CanAcceptDataFrom(BindingSource.Header) ?? false)
-        {
-            return new FromHeaderModelBinder();
-        }
-        if (context.BindingInfo.BindingSource?.CanAcceptDataFrom(BindingSource.Query) ?? false)
-        {
-            return new FromQueryModelBinder();
-        }
-        
-        return null;
+        return ConditionalBinders.FirstOrDefault(binder => binder.CanBind(context));
     }
 }

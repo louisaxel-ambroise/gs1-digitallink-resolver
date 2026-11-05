@@ -3,8 +3,16 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Goto.Infrastructure.Routing.Binding;
 
-internal class FromHeaderModelBinder : IModelBinder
+internal class FromHeaderModelBinder : IConditionalModelBinder
 {
+    private static readonly Type[] AcceptedTypes = [ typeof(Language[]), typeof(MediaType[]) ];
+
+    public bool CanBind(ModelBinderProviderContext context)
+    {
+        return AcceptedTypes.Contains(context.Metadata.UnderlyingOrModelType)
+            && (context.BindingInfo.BindingSource?.CanAcceptDataFrom(BindingSource.Header) ?? false);
+    }
+
     public async Task BindModelAsync(ModelBindingContext bindingContext)
     {
         var request = bindingContext.HttpContext.Request;
@@ -32,6 +40,10 @@ internal class FromHeaderModelBinder : IModelBinder
                 .ToArray();
 
             bindingContext.Result = ModelBindingResult.Success(mediaTypes);
+        }
+        else
+        {
+            throw new InvalidOperationException();
         }
     }
 }
