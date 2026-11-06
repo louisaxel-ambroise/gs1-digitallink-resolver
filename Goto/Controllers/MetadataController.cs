@@ -1,5 +1,6 @@
 ﻿using Goto.Controllers.Results;
 using Goto.Infrastructure.Routing.Binding;
+using Goto.Services;
 using Goto.Services.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -19,7 +20,7 @@ public sealed class MetadataController
         return new OkObjectResult(new MetadataResult
         {
             ResolverRoot = string.Concat(metadataUrl.Scheme, "://", metadataUrl.Host),
-            Name = "GOTO v0.1",
+            Name = "GOTO v" + typeof(MetadataController).Assembly.GetVersion(),
             SupportedPrimaryKeys = ["all"],
             LinkTypeDefaultCanBeLinkset = true,
             JsonLdContextLocation = "https://ref.gs1.org/standards/resolver/linkset-context",
