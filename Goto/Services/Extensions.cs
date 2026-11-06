@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Reflection;
+using System.Security.Claims;
 
 namespace Goto.Services;
 
@@ -28,5 +29,15 @@ public static class Extensions
     extension(ClaimsPrincipal principal)
     {
         public string GetCompanyPrefix() => principal.FindFirstValue("gs1:gcp") ?? throw new InvalidOperationException("Principal does not have company prefix claim");
+    }
+
+    extension(Uri uri)
+    {
+        public string BaseUrl => string.Concat(uri.Scheme, "://", uri.Host, (uri.Port != 80 && uri.Port != 443) ? $":{uri.Port}" : "");
+    }
+
+    extension(Assembly assembly)
+    {
+        public string GetVersion() => assembly.GetName().Version?.ToString(3) ?? "DEV";
     }
 }
