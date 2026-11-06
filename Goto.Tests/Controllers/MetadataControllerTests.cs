@@ -1,5 +1,6 @@
 ﻿using Goto.Controllers;
 using Goto.Controllers.Results;
+using Goto.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Goto.Tests.Controllers;
@@ -24,7 +25,7 @@ public static class MetadataControllerTests
             var metadata = Assert.IsInstanceOfType<MetadataResult>(okObjectResult.Value);
 
             Assert.AreEqual("https://test.url", metadata.ResolverRoot);
-            Assert.AreEqual("GOTO v0.1", metadata.Name);
+            Assert.AreEqual("GOTO v" + typeof(MetadataController).Assembly.GetVersion(), metadata.Name);
             Assert.IsTrue(metadata.LinkTypeDefaultCanBeLinkset);
             Assert.AreEqual("GOTO", metadata.Contact.Fn);
             CollectionAssert.AreEquivalent(ExpectedSupportedPrimaryKeys, metadata.SupportedPrimaryKeys);
