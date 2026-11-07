@@ -24,7 +24,7 @@
             @RenderBody()
         </div>
         <footer>
-            <p>&copy; @DateTimeOffset.UtcNow.Year <a href="@Context.Request.Host">@Context.Request.Host</a> - v@(typeof(CommonLocalizationService).Assembly.GetVersion())</p>
+            <p>&copy; @DateTimeOffset.UtcNow.Year <a href="@Context.Request.Scheme://@Context.Request.Host">@Context.Request.Host</a> - v@(typeof(CommonLocalizationService).Assembly.GetVersion())</p>
             <p><a href="https://goto.it.com/">@localizer["Home"]</a></p>
             <p>
                 @localizer["Theme:"]
