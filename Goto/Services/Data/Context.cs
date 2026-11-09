@@ -40,6 +40,16 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
             .SingleOrDefault(k => k.Id == apiKey);
     }
 
+    public ApiKey? GetApiKey(string name)
+    {
+        return Set<ApiKey>().AsTracking().FirstOrDefault(k => k.Name == name);
+    }
+
+    public List<ApiKey> ListApiKeys()
+    {
+        return [.. Set<ApiKey>()];
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
@@ -83,49 +93,6 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
         apiKey.Property(k => k.CompanyPrefix).IsRequired();
         apiKey.Property(k => k.BeginValidityDate).IsRequired().HasConversion(new DateTimeOffsetToBinaryConverter());
         apiKey.Property(k => k.EndValidityDate).IsRequired().HasConversion(new DateTimeOffsetToBinaryConverter());
-    }
-
-    public IEnumerable<string> SeedApiKeys(ApiKeyDefinition apiKeyDefinition)
-    {
-        var random = new Random(apiKeyDefinition.Seed ?? Random.Shared.Next());
-        var executionTime = TimeProvider.System.GetUtcNow();
-        var allKeys = Set<ApiKey>().AsTracking().Where(k => k.EndValidityDate >= executionTime).ToList();
-        var processedKeys = new List<ApiKey>();
-
-        foreach (var option in apiKeyDefinition.Keys)
-        {
-            var existingKey = allKeys.SingleOrDefault(k => k.Name == option.Name && k.CompanyPrefix == option.CompanyPrefix);
-
-            if (existingKey is null)
-            {
-                var secret = random.GetHexString(32, true);
-                var hash = SHA256.HashData(Encoding.UTF8.GetBytes(secret));
-
-                var apiKey = new ApiKey
-                {
-                    Id = Convert.ToBase64String(hash),
-                    Name = option.Name,
-                    CompanyPrefix = option.CompanyPrefix,
-                    BeginValidityDate = TimeProvider.System.GetUtcNow(),
-                    EndValidityDate = DateTime.MaxValue
-                };
-
-                yield return $"Created API Key '{option.Name}': '{secret}'";
-
-                Add(apiKey);
-            }
-            else
-            {
-                processedKeys.Add(existingKey);
-            }
-        }
-
-        foreach (var key in allKeys.Except(processedKeys))
-        {
-            key.Disable(TimeProvider.System.GetUtcNow());
-            yield return $"Disabled API Key '{key.Name}'";
-        }
-
-        SaveChanges();
+        apiKey.HasQueryFilter("ActiveApiKeys", k => k.EndValidityDate <= clock.UtcNow);
     }
 }
