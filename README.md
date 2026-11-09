@@ -10,9 +10,19 @@ This project provides a standards-compliant resolver that parses GS1 Digital Lin
 - Handles uncompressed/partially compressed/fully compressed AIs
 - Performs validation of GS1 AIs (Check Digit, GCP, etc.)
 
+## Installation
+
+Simply run the command `dotnet run --project ./Goto --urls=https://*:7111` to start the resolver on the port 7111.
+
+To be able to register anchors, API keys must be first configured using the CLI, for example `dotnet run --project ./Goto apikey create {name} {companyPrefix}`.
+
+More details can be found on the wiki. 
+
 ## Live demo
 
 The resolver is deployed at the URL https://id.goto.it.com/
+
+There is an active API Key for the company prefix 05414196: `6259fc2daa1eef4d3777e95001d10fef`
 
 It's free to use for testing, so don't hesitate to give it a try!
 
