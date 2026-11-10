@@ -93,6 +93,6 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
         apiKey.Property(k => k.CompanyPrefix).IsRequired();
         apiKey.Property(k => k.BeginValidityDate).IsRequired().HasConversion(new DateTimeOffsetToBinaryConverter());
         apiKey.Property(k => k.EndValidityDate).IsRequired().HasConversion(new DateTimeOffsetToBinaryConverter());
-        apiKey.HasQueryFilter("ActiveApiKeys", k => k.EndValidityDate <= clock.UtcNow);
+        apiKey.HasQueryFilter("ActiveApiKeys", k => k.EndValidityDate >= clock.UtcNow);
     }
 }
