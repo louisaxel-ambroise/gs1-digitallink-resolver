@@ -1,5 +1,5 @@
-@baseUrl=https://localhost:7111
-@apiKey=6259fc2daa1eef4d3777e95001d10fef
+@baseUrl=https://id.goto.it.com
+@apiKey=cd6ef0036f69172f628003b89801d24d
 
 ### List registered anchors
 GET {{baseUrl}}/api/anchors

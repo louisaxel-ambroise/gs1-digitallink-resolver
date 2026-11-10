@@ -22,7 +22,7 @@ More details can be found on the wiki.
 
 The resolver is deployed at the URL https://id.goto.it.com/
 
-There is an active API Key for the company prefix 05414196: `6259fc2daa1eef4d3777e95001d10fef`
+There is an active API Key for the company prefix 5414196: `cd6ef0036f69172f628003b89801d24d`
 
 It's free to use for testing, so don't hesitate to give it a try!
 
