@@ -1,17 +1,18 @@
-﻿using Goto.Services.Data;
+﻿using Goto.Services;
+using Goto.Services.Data;
 using Goto.Services.Data.Entities;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Goto.Cli;
 
-public class ApiKeyCli(Context context)
+public sealed class ApiKeyCli(Context context, Clock clock)
 {
     public void Run(string[] parameters)
     {
-        var command = parameters.FirstOrDefault();
+        var command = parameters.FirstOrDefault(string.Empty);
 
-        switch (command)
+        switch (command.ToLower())
         {
             case "list" when parameters.Length == 1:
                 HandleListCommand();
@@ -26,12 +27,12 @@ public class ApiKeyCli(Context context)
                 HandleRotateCommand(parameters[1]);
                 break;
             default:
-                Help();
+                ShowHelp();
                 break;
         }
     }
 
-    private static void Help()
+    private static void ShowHelp()
     {
         Console.WriteLine("""
             API Key Management
@@ -40,8 +41,8 @@ public class ApiKeyCli(Context context)
 
               apikey list
               apikey create [name] [companyPrefix]
-              apikey revoke [name]
               apikey rotate [name]
+              apikey revoke [name]
             """);
     }
 
@@ -70,7 +71,7 @@ public class ApiKeyCli(Context context)
             return;
         }
 
-        key.Disable(TimeProvider.System.GetUtcNow());
+        key.Disable(clock.UtcNow);
         context.SaveChanges();
 
         Console.WriteLine($"Deleted API key: {name}");
@@ -136,7 +137,7 @@ public class ApiKeyCli(Context context)
             Id = Convert.ToBase64String(hash),
             Name = name,
             CompanyPrefix = companyPrefix,
-            BeginValidityDate = TimeProvider.System.GetUtcNow(),
+            BeginValidityDate = clock.UtcNow,
             EndValidityDate = DateTime.MaxValue
         };
 

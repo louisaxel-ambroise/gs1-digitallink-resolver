@@ -1,6 +1,5 @@
 using Goto;
 using Goto.Cli;
-using Goto.Infrastructure.Authentication;
 using Goto.Services.Data;
 
 var builder = WebApplication
@@ -11,16 +10,16 @@ var builder = WebApplication
 
 var app = builder.Build();
 
-if (builder.Environment.IsDevelopment() || args.Contains("--bootstrap"))
+if (builder.Environment.IsDevelopment() || args.Length == 1 && args[0].Equals("bootstrap", StringComparison.OrdinalIgnoreCase))
 {
     using var scope = app.Services.CreateScope();
     using var context = scope.ServiceProvider.GetRequiredService<Context>();
     context.Database.EnsureCreated();
 
-    Console.WriteLine("Database created");
+    Console.WriteLine("Database initialized");
 }
 
-if (args.Length > 0 && args[0] == "apikey")
+if (args.Length > 0 && args[0].Equals("apikey", StringComparison.OrdinalIgnoreCase))
 {
     using var scope = app.Services.CreateScope();
     var cli = scope.ServiceProvider.GetRequiredService<ApiKeyCli>();

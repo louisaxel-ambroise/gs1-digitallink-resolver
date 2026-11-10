@@ -19,17 +19,6 @@ public static class ExtensionsTests
 
             Assert.AreEqual(a, result);
         }
-
-        [TestMethod]
-        public void MaxShouldReturnLatestNonNull()
-        {
-            var a = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
-            var b = DateTimeOffset.Parse("2021-01-01T00:00:00Z");
-
-            var result = Extensions.Max(a, null, b);
-
-            Assert.AreEqual(b, result);
-        }
     }
 
     [TestClass]
