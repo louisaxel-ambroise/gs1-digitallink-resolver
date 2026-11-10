@@ -1,4 +1,5 @@
 using Goto;
+using Goto.Cli;
 using Goto.Infrastructure.Authentication;
 using Goto.Services.Data;
 
@@ -16,24 +17,24 @@ if (builder.Environment.IsDevelopment() || args.Contains("--bootstrap"))
     using var context = scope.ServiceProvider.GetRequiredService<Context>();
     context.Database.EnsureCreated();
 
-    var apiKeyDefinition = builder.Configuration.GetSection("ApiKeys").Get<ApiKeyDefinition>();
-
-    if(apiKeyDefinition is not null)
-    {
-        var bootstrapResult = context.SeedApiKeys(apiKeyDefinition);
-
-        foreach(var result in bootstrapResult)
-        {
-            Console.WriteLine(result);
-        }
-    }
+    Console.WriteLine("Database created");
 }
 
-app.UseCors();
-app.UseAuthorization();
-app.MapStaticAssets();
-app.UseRequestLocalization();
-app.UseExceptionHandler("/error");
-app.MapControllers();
+if (args.Length > 0 && args[0] == "apikey")
+{
+    using var scope = app.Services.CreateScope();
+    var cli = scope.ServiceProvider.GetRequiredService<ApiKeyCli>();
+    
+    cli.Run([.. args.Skip(1)]);
+}
+else
+{
+    app.UseCors();
+    app.UseAuthorization();
+    app.MapStaticAssets();
+    app.UseRequestLocalization();
+    app.UseExceptionHandler("/error");
+    app.MapControllers();
 
-app.Run();
+    app.Run();
+}

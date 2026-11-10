@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Sqids;
 using System.Threading.Channels;
 using System.Text.Json.Serialization;
+using Goto.Cli;
 
 namespace Goto;
 
@@ -25,8 +26,8 @@ public static class DependencyInjectionExtensions
     {
         var tdtEngineBuilder = new TdtEngineBuilder();
 
-        tdtEngineBuilder = Directory.GetFiles("wwwroot/DefinitionFiles").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddDefinitionFile(file));
-        tdtEngineBuilder = Directory.GetFiles("wwwroot/Tables").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddTableFile(file));
+        tdtEngineBuilder = Directory.GetFiles("wwwroot/DefinitionFiles", "*.json").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddDefinitionFile(file));
+        tdtEngineBuilder = Directory.GetFiles("wwwroot/Tables", "*.json").Aggregate(tdtEngineBuilder, (builder, file) => builder.AddTableFile(file));
 
         CompanyPrefix.Initialize("wwwroot/gcpprefixformatlist.xml");
         ApplicationIdentifiers.Initialize("wwwroot/ApplicationIdentifiers.json", new() { PropertyNameCaseInsensitive = true });
@@ -83,6 +84,7 @@ public static class DependencyInjectionExtensions
         builder.Services.AddAuthentication("ApiKey").AddScheme<ApiKeyAuthenticationSchemeOptions, ApiKeyAuthenticationSchemeHandler>("ApiKey", opts => opts.ApiKey = builder.Configuration.GetValue<string>("ApiKey"));
         builder.Services.AddCors(opt => opt.AddDefaultPolicy(p => p.AllowAnyHeader().AllowAnyOrigin().WithMethods("GET", "HEAD", "OPTIONS")));
         builder.Services.AddLocalization();
+        builder.Services.AddScoped<ApiKeyCli>();
 
         return builder;
     }

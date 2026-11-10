@@ -17,4 +17,10 @@
     <ProjectReference Include="..\DigitalLinkToolkit\DigitalLinkToolkit.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

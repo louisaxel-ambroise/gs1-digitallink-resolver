@@ -14,7 +14,7 @@ public sealed class LinksetResultConverter : JsonConverter<LinksetResult>
     public override void Write(Utf8JsonWriter writer, LinksetResult value, JsonSerializerOptions options)
     {
         var linkset = value.Anchors.Select(a => {
-            var dict = new Dictionary<string, object>
+            var dict = new Dictionary<string, object?>
             {
                 { "anchor", a.Anchor },
                 { "description", a.Description }
