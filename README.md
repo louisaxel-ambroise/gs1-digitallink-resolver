@@ -14,7 +14,7 @@ This project provides a standards-compliant resolver that parses GS1 Digital Lin
 
 Simply run the command `dotnet run --project ./Goto --urls=https://*:7111` to start the resolver on the port 7111.
 
-To be able to register anchors, API keys must be first configured using the CLI, for example `dotnet run --project ./Goto apikey create {name} {companyPrefix}`.
+To be able to register anchors, API keys must be first configured using the CLI, for example `dotnet run --project ./Goto apikey create {name} {companyPrefix}`. The key secret will be displayed in the console.
 
 More details can be found on the wiki. 
 
@@ -28,12 +28,14 @@ It's free to use for testing, so don't hesitate to give it a try!
 
 There is also a [Postman Workspace](https://www.postman.com/fastnt-epcis/goto-gs1-digitallink-resolver/overview) with API request examples that you can try for a quick look at its capabilities.
 
-## API Overview
+## Features
 
-The resolver contains endpoint to:
-- Register an anchor/DigitalLink and redirection for DigitalLinks
-- Resolve a DigitalLink
-- Get insights for a DigitalLink
+These are the main features of GOTO Digital Link resolver:
+- Register an anchor and setup redirections for DigitalLinks
+- Resolve a GS1 DigitalLink (compressed/uncompressed, also handles legacy compression feature)
+- Get insights for a DigitalLink: number of resolutions, result and available links
+
+## API overview
 
 ### Register a DigitalLink
 
@@ -88,16 +90,6 @@ curl -X GET "https://id.goto.it.com/api/insights/01/09506000134352?days=1" -H "C
 ```
 
 The days parameter restricts the number of days returned by the endpoint. The default value is 1 and maximum is 365 (1 year)
-
-
-## Installation
-
-1. Clone the repo: `git clone https://github.com/louisaxel-ambroise/goto`
-2. Go to the directory: `cd goto`
-3. Restore nuget packages: `dotnet restore`
-4. Run the project: `dotnet run --project Goto.csproj`
-
-By default, the server will start on: https://localhost:7111
 
 ## Contributing
 
