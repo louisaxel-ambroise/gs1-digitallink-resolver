@@ -17,8 +17,8 @@ public sealed class ApiKeyCli(Context context, Clock clock)
             case "list" when parameters.Length == 1:
                 HandleListCommand();
                 break;
-            case "create" when parameters.Length == 3:
-                HandleCreateCommand(parameters[1], parameters[2]);
+            case "create" when parameters.Length >= 3:
+                HandleCreateCommand(parameters[1], parameters[2], parameters[3..]);
                 break;
             case "revoke" when parameters.Length == 2:
                 HandleRevokeCommand(parameters[1]);
@@ -77,11 +77,11 @@ public sealed class ApiKeyCli(Context context, Clock clock)
         Console.WriteLine($"Deleted API key: {name}");
     }
 
-    private void HandleCreateCommand(string name, string companyPrefix)
+    private void HandleCreateCommand(string name, string companyPrefix, string[] remaining)
     {
         try
         {
-            var secret = GenerateKey(name, companyPrefix);
+            string secret = remaining.Length > 0 ? StoreKey(name, companyPrefix, remaining[0]) : GenerateKey(name, companyPrefix);
 
             Console.Write("Created API key. Secret: ");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -130,6 +130,12 @@ public sealed class ApiKeyCli(Context context, Clock clock)
     {
         var random = new Random(name.GetHashCode());
         var secret = random.GetHexString(32, true);
+
+        return StoreKey(name, companyPrefix, secret);
+    }
+
+    private string StoreKey(string name, string companyPrefix, string secret)
+    {
         var hash = SHA256.HashData(Encoding.UTF8.GetBytes(secret));
 
         var apiKey = new ApiKey

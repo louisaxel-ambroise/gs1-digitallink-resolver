@@ -1,5 +1,5 @@
 @baseUrl=https://id.goto.it.com
-@apiKey=cd6ef0036f69172f628003b89801d24d
+@apiKey=b3c399a0d1ff8159c409bddb1de5ff66
 
 ### List registered anchors
 GET {{baseUrl}}/api/anchors
