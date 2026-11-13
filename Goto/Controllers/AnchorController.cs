@@ -44,7 +44,7 @@ public sealed class AnchorController(Context context, Clock clock, ClaimsPrincip
         var anchor = new Anchor
         {
             Prefix = identifier.Value,
-            CompanyPrefix = principal.GetCompanyPrefix(),
+            CompanyPrefix = principal.GetCompanyPrefix() ?? identifier.CompanyPrefix ?? throw new InvalidOperationException("Cannot infer company prefix"),
             Description = new(request.Description)
         };
         context.Add(anchor);

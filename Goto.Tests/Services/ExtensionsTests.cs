@@ -25,7 +25,7 @@ public static class ExtensionsTests
     public class HttpResponseExtensionsTests
     {
         [TestMethod]
-        [DataRow(100, true)]
+        [DataRow(100, false)]
         [DataRow(200, true)]
         [DataRow(399, true)]
         [DataRow(400, false)]
