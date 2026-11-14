@@ -17,13 +17,18 @@ public static class Extensions
     {
         public bool IsSuccessStatusCode()
         {
-            return response.StatusCode is < 400;
+            return response.StatusCode is >= 200 and < 400;
         }
     }
 
     extension(ClaimsPrincipal principal)
     {
-        public string GetCompanyPrefix() => principal.FindFirstValue("gs1:gcp") ?? throw new InvalidOperationException("Principal does not have company prefix claim");
+        public string? GetCompanyPrefix()
+        {
+            var gcp = principal.FindFirstValue("gs1:gcp") ?? throw new InvalidOperationException("Principal does not have company prefix claim");
+
+            return gcp == "*" ? null : gcp;
+        }
     }
 
     extension(Uri uri)

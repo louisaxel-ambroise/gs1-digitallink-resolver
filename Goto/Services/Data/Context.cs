@@ -1,13 +1,9 @@
 ﻿using DigitalLinkToolkit.Conversion.Model;
-using Goto.Infrastructure.Authentication;
 using Goto.Services.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Goto.Services.Data;
 
@@ -16,14 +12,14 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
     public IQueryable<Insight> InsightsForUser(ClaimsPrincipal user)
     {
         return Set<Insight>()
-            .Where(i => i.CompanyPrefix == null || i.CompanyPrefix == user.GetCompanyPrefix());
+            .Where(i => i.CompanyPrefix == null || user.GetCompanyPrefix() == null || i.CompanyPrefix == user.GetCompanyPrefix());
     }
 
     public IQueryable<Anchor> AnchorsForUser(ClaimsPrincipal user)
     {
         return Set<Anchor>()
             .IgnoreQueryFilters(["ActiveLinks"])
-            .Where(a => a.CompanyPrefix == user.GetCompanyPrefix());
+            .Where(a => user.GetCompanyPrefix() == null || a.CompanyPrefix == user.GetCompanyPrefix());
     }
 
     public IQueryable<Anchor> AnchorsForLink(DigitalLink digitalLink)
