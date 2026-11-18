@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dark" xml:space="preserve">
+    <value>暗色</value>
+  </data>
+  <data name="Details of the error" xml:space="preserve">
+    <value>错误详情</value>
+  </data>
+  <data name="DuplicateAI" xml:space="preserve">
+    <value>AI 值重复</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="gs1:activityIdeas" xml:space="preserve">
+    <value>活动建议</value>
+  </data>
+  <data name="gs1:allergenInfo" xml:space="preserve">
+    <value>过敏原信息</value>
+  </data>
+  <data name="gs1:appDownload" xml:space="preserve">
+    <value>应用下载</value>
+  </data>
+  <data name="gs1:backgroundInfo" xml:space="preserve">
+    <value>背景信息</value>
+  </data>
+  <data name="gs1:brandHomepageClinical" xml:space="preserve">
+    <value>品牌信息（专业人士）</value>
+  </data>
+  <data name="gs1:brandHomepagePatient" xml:space="preserve">
+    <value>品牌信息（患者）</value>
+  </data>
+  <data name="gs1:careersInfo" xml:space="preserve">
+    <value>招聘信息</value>
+  </data>
+  <data name="gs1:certificationInfo" xml:space="preserve">
+    <value>认证信息</value>
+  </data>
+  <data name="gs1:consumerHandlingStorageInfo" xml:space="preserve">
+    <value>消费者使用/储存信息</value>
+  </data>
+  <data name="gs1:defaultLink" xml:space="preserve">
+    <value>默认链接</value>
+  </data>
+  <data name="gs1:defaultLinkMulti" xml:space="preserve">
+    <value>默认链接</value>
+  </data>
+  <data name="gs1:dpp" xml:space="preserve">
+    <value>数字护照产品</value>
+  </data>
+  <data name="gs1:eifu" xml:space="preserve">
+    <value>电子使用说明</value>
+  </data>
+  <data name="gs1:epcis" xml:space="preserve">
+    <value>EPCIS</value>
+  </data>
+  <data name="gs1:epil" xml:space="preserve">
+    <value>电子患者信息手册</value>
+  </data>
+  <data name="gs1:eventsInfo" xml:space="preserve">
+    <value>活动信息</value>
+  </data>
+  <data name="gs1:faqs" xml:space="preserve">
+    <value>常见问题</value>
+  </data>
+  <data name="gs1:handledBy" xml:space="preserve">
+    <value>由……负责</value>
+  </data>
+  <data name="gs1:hasRetailers" xml:space="preserve">
+    <value>有零售商</value>
+  </data>
+  <data name="gs1:homepage" xml:space="preserve">
+    <value>组织信息页面</value>
+  </data>
+  <data name="gs1:ingredientsInfo" xml:space="preserve">
+    <value>成分信息</value>
+  </data>
+  <data name="gs1:instructions" xml:space="preserve">
+    <value>说明</value>
+  </data>
+  <data name="gs1:jws" xml:space="preserve">
+    <value>JSON Web签名</value>
+  </data>
+  <data name="gs1:leaveReview" xml:space="preserve">
+    <value>发表评论</value>
+  </data>
+  <data name="gs1:locationInfo" xml:space="preserve">
+    <value>位置信息</value>
+  </data>
+  <data name="gs1:logisticsInfo" xml:space="preserve">
+    <value>物流信息</value>
+  </data>
+  <data name="gs1:loyaltyProgram" xml:space="preserve">
+    <value>忠诚度计划</value>
+  </data>
+  <data name="gs1:masterData" xml:space="preserve">
+    <value>主数据</value>
+  </data>
+  <data name="gs1:menuInfo" xml:space="preserve">
+    <value>菜单信息</value>
+  </data>
+  <data name="gs1:nutritionalInfo" xml:space="preserve">
+    <value>营养信息</value>
+  </data>
+  <data name="gs1:openingHoursInfo" xml:space="preserve">
+    <value>营业时间信息</value>
+  </data>
+  <data name="gs1:paymentLink" xml:space="preserve">
+    <value>付款</value>
+  </data>
+  <data name="gs1:pip" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="gs1:productSustainabilityInfo" xml:space="preserve">
+    <value>可持续性与回收</value>
+  </data>
+  <data name="gs1:promotion" xml:space="preserve">
+    <value>促销</value>
+  </data>
+  <data name="gs1:purchaseSuppliesOrAccessories" xml:space="preserve">
+    <value>购买耗材或配件</value>
+  </data>
+  <data name="gs1:quickStartGuide" xml:space="preserve">
+    <value>快速入门指南</value>
+  </data>
+  <data name="gs1:recallStatus" xml:space="preserve">
+    <value>召回状态</value>
+  </data>
+  <data name="gs1:recipeInfo" xml:space="preserve">
+    <value>食谱网站</value>
+  </data>
+  <data name="gs1:registerProduct" xml:space="preserve">
+    <value>购买登记</value>
+  </data>
+  <data name="gs1:registryEntry" xml:space="preserve">
+    <value>登记条目</value>
+  </data>
+  <data name="gs1:relatedImage" xml:space="preserve">
+    <value>相关图片</value>
+  </data>
+  <data name="gs1:relatedVideo" xml:space="preserve">
+    <value>相关视频</value>
+  </data>
+  <data name="gs1:reportFound" xml:space="preserve">
+    <value>报告已找到</value>
+  </data>
+  <data name="gs1:review" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="gs1:safetyInfo" xml:space="preserve">
+    <value>安全信息</value>
+  </data>
+  <data name="gs1:scheduleTime" xml:space="preserve">
+    <value>日程安排/预订</value>
+  </data>
+  <data name="gs1:serviceInfo" xml:space="preserve">
+    <value>服务信息</value>
+  </data>
+  <data name="gs1:smartLabel" xml:space="preserve">
+    <value>SmartLabel</value>
+  </data>
+  <data name="gs1:smpc" xml:space="preserve">
+    <value>产品特性摘要</value>
+  </data>
+  <data name="gs1:socialMedia" xml:space="preserve">
+    <value>社交媒体</value>
+  </data>
+  <data name="gs1:statisticInfo" xml:space="preserve">
+    <value>统计数据</value>
+  </data>
+  <data name="gs1:subscribe" xml:space="preserve">
+    <value>订阅</value>
+  </data>
+  <data name="gs1:support" xml:space="preserve">
+    <value>支持</value>
+  </data>
+  <data name="gs1:sustainabilityInfo" xml:space="preserve">
+    <value>可持续发展与回收</value>
+  </data>
+  <data name="gs1:traceability" xml:space="preserve">
+    <value>可追溯性信息</value>
+  </data>
+  <data name="gs1:tutorial" xml:space="preserve">
+    <value>教程</value>
+  </data>
+  <data name="gs1:userAgreement" xml:space="preserve">
+    <value>签署免责声明/协议/文件</value>
+  </data>
+  <data name="gs1:verificationService" xml:space="preserve">
+    <value>验证服务</value>
+  </data>
+  <data name="gs1:whatsInTheBox" xml:space="preserve">
+    <value>包装内含物</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>内部错误</value>
+  </data>
+  <data name="InvalidAIValue" xml:space="preserve">
+    <value>值与 AI 模式不匹配</value>
+  </data>
+  <data name="InvalidCheckDigit" xml:space="preserve">
+    <value>校验位无效</value>
+  </data>
+  <data name="InvalidCompanyPrefix" xml:space="preserve">
+    <value>公司前缀无效</value>
+  </data>
+  <data name="InvalidInput" xml:space="preserve">
+    <value>提供的数字链接无效</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>光</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>链接</value>
+  </data>
+  <data name="Links for Anchor" xml:space="preserve">
+    <value>锚点链接</value>
+  </data>
+  <data name="Linkset" xml:space="preserve">
+    <value>链接集</value>
+  </data>
+  <data name="Linkset for this resource" xml:space="preserve">
+    <value>此资源的链接集</value>
+  </data>
+  <data name="Media Type" xml:space="preserve">
+    <value>媒体类型</value>
+  </data>
+  <data name="Multiple choices available" xml:space="preserve">
+    <value>有多个选项可供选择</value>
+  </data>
+  <data name="Multiple links are available for this resource" xml:space="preserve">
+    <value>此资源有多个链接</value>
+  </data>
+  <data name="No description provided" xml:space="preserve">
+    <value>未提供描述</value>
+  </data>
+  <data name="No links configured for this resource" xml:space="preserve">
+    <value>此资源未配置任何链接</value>
+  </data>
+  <data name="NoCompanyPrefix" xml:space="preserve">
+    <value>没有组件包含 GCP 值</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>未找到</value>
+  </data>
+  <data name="The provided digital link is invalid" xml:space="preserve">
+    <value>提供的数字链接无效</value>
+  </data>
+  <data name="The request specified an invalid DigitalLink" xml:space="preserve">
+    <value>请求指定的数字链接无效</value>
+  </data>
+  <data name="Theme:" xml:space="preserve">
+    <value>主题：</value>
+  </data>
+  <data name="There is no entry configured for the specified request" xml:space="preserve">
+    <value>未为指定的请求配置任何条目</value>
+  </data>
+  <data name="This request should not be retried." xml:space="preserve">
+    <value>不应重试此请求。</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="Unable to process the request" xml:space="preserve">
+    <value>无法处理该请求</value>
+  </data>
+  <data name="UnknownAI" xml:space="preserve">
+    <value>存在未知 AI</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="Your GOTO resolver is up and running!" xml:space="preserve">
+    <value>您的 GOTO 解析器已启动并正在运行！</value>
+  </data>
+</root>

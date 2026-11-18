@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dark" xml:space="preserve">
+    <value>Темний</value>
+  </data>
+  <data name="Details of the error" xml:space="preserve">
+    <value>Деталі помилки</value>
+  </data>
+  <data name="DuplicateAI" xml:space="preserve">
+    <value>Виявлено дублікат значення AI</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="gs1:activityIdeas" xml:space="preserve">
+    <value>Ідеї щодо активності</value>
+  </data>
+  <data name="gs1:allergenInfo" xml:space="preserve">
+    <value>Інформація про алергени</value>
+  </data>
+  <data name="gs1:appDownload" xml:space="preserve">
+    <value>Завантаження додатка</value>
+  </data>
+  <data name="gs1:backgroundInfo" xml:space="preserve">
+    <value>Довідкова інформація</value>
+  </data>
+  <data name="gs1:brandHomepageClinical" xml:space="preserve">
+    <value>Інформація про бренд (для фахівців)</value>
+  </data>
+  <data name="gs1:brandHomepagePatient" xml:space="preserve">
+    <value>Інформація про бренд (для пацієнтів)</value>
+  </data>
+  <data name="gs1:careersInfo" xml:space="preserve">
+    <value>Інформація про вакансії</value>
+  </data>
+  <data name="gs1:certificationInfo" xml:space="preserve">
+    <value>Інформація про сертифікацію</value>
+  </data>
+  <data name="gs1:consumerHandlingStorageInfo" xml:space="preserve">
+    <value>Інформація для споживачів щодо поводження та зберігання</value>
+  </data>
+  <data name="gs1:defaultLink" xml:space="preserve">
+    <value>Посилання за замовчуванням</value>
+  </data>
+  <data name="gs1:defaultLinkMulti" xml:space="preserve">
+    <value>Посилання за замовчуванням</value>
+  </data>
+  <data name="gs1:dpp" xml:space="preserve">
+    <value>Продукт «Цифровий паспорт»</value>
+  </data>
+  <data name="gs1:eifu" xml:space="preserve">
+    <value>Електронна інструкція з використання</value>
+  </data>
+  <data name="gs1:epcis" xml:space="preserve">
+    <value>EPCIS</value>
+  </data>
+  <data name="gs1:epil" xml:space="preserve">
+    <value>Електронна інформаційна брошура для пацієнтів</value>
+  </data>
+  <data name="gs1:eventsInfo" xml:space="preserve">
+    <value>Інформація про події</value>
+  </data>
+  <data name="gs1:faqs" xml:space="preserve">
+    <value>Поширені запитання</value>
+  </data>
+  <data name="gs1:handledBy" xml:space="preserve">
+    <value>Відповідальний</value>
+  </data>
+  <data name="gs1:hasRetailers" xml:space="preserve">
+    <value>Є у роздрібних продавців</value>
+  </data>
+  <data name="gs1:homepage" xml:space="preserve">
+    <value>Сторінка з інформацією про організацію</value>
+  </data>
+  <data name="gs1:ingredientsInfo" xml:space="preserve">
+    <value>Інформація про склад</value>
+  </data>
+  <data name="gs1:instructions" xml:space="preserve">
+    <value>Інструкції</value>
+  </data>
+  <data name="gs1:jws" xml:space="preserve">
+    <value>Веб-підпис JSON</value>
+  </data>
+  <data name="gs1:leaveReview" xml:space="preserve">
+    <value>Залишити відгук</value>
+  </data>
+  <data name="gs1:locationInfo" xml:space="preserve">
+    <value>Інформація про місцезнаходження</value>
+  </data>
+  <data name="gs1:logisticsInfo" xml:space="preserve">
+    <value>Інформація про логістику</value>
+  </data>
+  <data name="gs1:loyaltyProgram" xml:space="preserve">
+    <value>Програма лояльності</value>
+  </data>
+  <data name="gs1:masterData" xml:space="preserve">
+    <value>Базові дані</value>
+  </data>
+  <data name="gs1:menuInfo" xml:space="preserve">
+    <value>Інформація про меню</value>
+  </data>
+  <data name="gs1:nutritionalInfo" xml:space="preserve">
+    <value>Інформація про харчову цінність</value>
+  </data>
+  <data name="gs1:openingHoursInfo" xml:space="preserve">
+    <value>Інформація про години роботи</value>
+  </data>
+  <data name="gs1:paymentLink" xml:space="preserve">
+    <value>Здійснити оплату</value>
+  </data>
+  <data name="gs1:pip" xml:space="preserve">
+    <value>Інформація про товар</value>
+  </data>
+  <data name="gs1:productSustainabilityInfo" xml:space="preserve">
+    <value>Сталий розвиток та переробка</value>
+  </data>
+  <data name="gs1:promotion" xml:space="preserve">
+    <value>Акція</value>
+  </data>
+  <data name="gs1:purchaseSuppliesOrAccessories" xml:space="preserve">
+    <value>Придбати витратні матеріали або аксесуари</value>
+  </data>
+  <data name="gs1:quickStartGuide" xml:space="preserve">
+    <value>Короткий посібник користувача</value>
+  </data>
+  <data name="gs1:recallStatus" xml:space="preserve">
+    <value>Статус відкликання</value>
+  </data>
+  <data name="gs1:recipeInfo" xml:space="preserve">
+    <value>Веб-сайт з рецептами</value>
+  </data>
+  <data name="gs1:registerProduct" xml:space="preserve">
+    <value>Реєстрація покупки</value>
+  </data>
+  <data name="gs1:registryEntry" xml:space="preserve">
+    <value>Запис у реєстрі</value>
+  </data>
+  <data name="gs1:relatedImage" xml:space="preserve">
+    <value>Пов’язане зображення</value>
+  </data>
+  <data name="gs1:relatedVideo" xml:space="preserve">
+    <value>Пов’язане відео</value>
+  </data>
+  <data name="gs1:reportFound" xml:space="preserve">
+    <value>Знайдено звіт</value>
+  </data>
+  <data name="gs1:review" xml:space="preserve">
+    <value>Відгуки</value>
+  </data>
+  <data name="gs1:safetyInfo" xml:space="preserve">
+    <value>Інформація з безпеки</value>
+  </data>
+  <data name="gs1:scheduleTime" xml:space="preserve">
+    <value>Планування/бронювання</value>
+  </data>
+  <data name="gs1:serviceInfo" xml:space="preserve">
+    <value>Інформація про обслуговування</value>
+  </data>
+  <data name="gs1:smartLabel" xml:space="preserve">
+    <value>SmartLabel</value>
+  </data>
+  <data name="gs1:smpc" xml:space="preserve">
+    <value>Коротка характеристика препарату</value>
+  </data>
+  <data name="gs1:socialMedia" xml:space="preserve">
+    <value>Соціальні мережі</value>
+  </data>
+  <data name="gs1:statisticInfo" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="gs1:subscribe" xml:space="preserve">
+    <value>Підписатися</value>
+  </data>
+  <data name="gs1:support" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="gs1:sustainabilityInfo" xml:space="preserve">
+    <value>Екологічність та переробка</value>
+  </data>
+  <data name="gs1:traceability" xml:space="preserve">
+    <value>Інформація про простежуваність</value>
+  </data>
+  <data name="gs1:tutorial" xml:space="preserve">
+    <value>Посібник</value>
+  </data>
+  <data name="gs1:userAgreement" xml:space="preserve">
+    <value>Підписати відмову від претензій/угоду/документ</value>
+  </data>
+  <data name="gs1:verificationService" xml:space="preserve">
+    <value>Служба верифікації</value>
+  </data>
+  <data name="gs1:whatsInTheBox" xml:space="preserve">
+    <value>Що входить до комплекту?</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Внутрішня помилка</value>
+  </data>
+  <data name="InvalidAIValue" xml:space="preserve">
+    <value>Значення не відповідає шаблону ШІ</value>
+  </data>
+  <data name="InvalidCheckDigit" xml:space="preserve">
+    <value>Контрольна цифра недійсна</value>
+  </data>
+  <data name="InvalidCompanyPrefix" xml:space="preserve">
+    <value>Префікс компанії недійсний</value>
+  </data>
+  <data name="InvalidInput" xml:space="preserve">
+    <value>Надане цифрове посилання недійсне</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Мова</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Мови</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Світло</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Посилання</value>
+  </data>
+  <data name="Links for Anchor" xml:space="preserve">
+    <value>Посилання для анкора</value>
+  </data>
+  <data name="Linkset" xml:space="preserve">
+    <value>Набір посилань</value>
+  </data>
+  <data name="Linkset for this resource" xml:space="preserve">
+    <value>Набір посилань для цього ресурсу</value>
+  </data>
+  <data name="Media Type" xml:space="preserve">
+    <value>Тип медіа</value>
+  </data>
+  <data name="Multiple choices available" xml:space="preserve">
+    <value>Доступні кілька варіантів</value>
+  </data>
+  <data name="Multiple links are available for this resource" xml:space="preserve">
+    <value>Для цього ресурсу доступно кілька посилань</value>
+  </data>
+  <data name="No description provided" xml:space="preserve">
+    <value>Опис не надано</value>
+  </data>
+  <data name="No links configured for this resource" xml:space="preserve">
+    <value>Для цього ресурсу не налаштовано жодного посилання</value>
+  </data>
+  <data name="NoCompanyPrefix" xml:space="preserve">
+    <value>Жоден компонент не містить значення GCP</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>Не знайдено</value>
+  </data>
+  <data name="The provided digital link is invalid" xml:space="preserve">
+    <value>Надане цифрове посилання є недійсним</value>
+  </data>
+  <data name="The request specified an invalid DigitalLink" xml:space="preserve">
+    <value>У запиті вказано недійсне цифрове посилання (DigitalLink)</value>
+  </data>
+  <data name="Theme:" xml:space="preserve">
+    <value>Тема:</value>
+  </data>
+  <data name="There is no entry configured for the specified request" xml:space="preserve">
+    <value>Для вказаного запиту не налаштовано жодного запису</value>
+  </data>
+  <data name="This request should not be retried." xml:space="preserve">
+    <value>Цей запит не слід повторювати.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="Unable to process the request" xml:space="preserve">
+    <value>Не вдалося обробити запит</value>
+  </data>
+  <data name="UnknownAI" xml:space="preserve">
+    <value>Виявлено невідомий ШІ</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Ласкаво просимо</value>
+  </data>
+  <data name="Your GOTO resolver is up and running!" xml:space="preserve">
+    <value>Ваш резолвер GOTO працює!</value>
+  </data>
+</root>
