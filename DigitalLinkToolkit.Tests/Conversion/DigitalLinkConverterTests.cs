@@ -47,7 +47,7 @@ public static class DigitalLinkConverterTests
         {
             var digitalLink = DigitalLinkConverter.Parse("https://id.goto.it.com", path, query);
 
-            Assert.AreSequenceEqual(expectedAIs, digitalLink.AIs.Select(x => x.Key.Code).ToArray());
+            Assert.AreSequenceEqual(expectedAIs, [.. digitalLink.AIs.Select(x => x.Key.Code)]);
         }
     }
 

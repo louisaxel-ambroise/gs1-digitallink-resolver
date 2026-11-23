@@ -17,14 +17,14 @@ public sealed class DigitalLinkConverter(ApplicationIdentifiers identifiers, TdT
         var path = request.Path.Value.TrimStart('/');
         var queryString = request.QueryString.ToString();
 
-        if (path.StartsWith("eh") || path.StartsWith("ex"))
-        {
-            var decompressedDigitalLink = translationEngine.Decompress(path.TrimStart('/'), host);
-            var decompressedUri = new Uri(decompressedDigitalLink);
+        return Parse(host, path, queryString);
+    }
 
-            path = decompressedUri.AbsolutePath;
-            queryString = decompressedUri.Query;
-        }
+    public DigitalLink Parse(Uri requestUri)
+    {
+        var host = string.Concat(requestUri.Scheme, "://", requestUri.Host);
+        var path = requestUri.AbsolutePath.TrimStart('/');
+        var queryString = requestUri.Query;
 
         return Parse(host, path, queryString);
     }
@@ -32,6 +32,15 @@ public sealed class DigitalLinkConverter(ApplicationIdentifiers identifiers, TdT
     public DigitalLink Parse(string host, string path, string query)
     {
         var builder = new DigitalLinkBuilder(host);
+
+        if (path.StartsWith("eh") || path.StartsWith("ex"))
+        {
+            var decompressedDigitalLink = translationEngine.Decompress(path.TrimStart('/'), host);
+            var decompressedUri = new Uri(decompressedDigitalLink);
+
+            path = decompressedUri.AbsolutePath;
+            query = decompressedUri.Query;
+        }
 
         if (TryProcessUriPath(path.Trim('/'), builder))
         {
