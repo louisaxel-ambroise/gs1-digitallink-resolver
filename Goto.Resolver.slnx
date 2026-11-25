@@ -5,6 +5,7 @@
     <File Path="Doc/resolution.http" />
   </Folder>
   <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
     <File Path=".filenesting.json" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
