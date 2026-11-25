@@ -14,21 +14,11 @@ public sealed class ApiKeyCli(Context context, Clock clock)
 
         switch (command.ToLower())
         {
-            case "list" when parameters.Length == 1:
-                HandleListCommand();
-                break;
-            case "create" when parameters.Length >= 3:
-                HandleCreateCommand(parameters[1], parameters[2], parameters[3..]);
-                break;
-            case "revoke" when parameters.Length == 2:
-                HandleRevokeCommand(parameters[1]);
-                break;
-            case "rotate" when parameters.Length == 2:
-                HandleRotateCommand(parameters[1]);
-                break;
-            default:
-                ShowHelp();
-                break;
+            case "list" when parameters.Length == 1: HandleListCommand(); break;
+            case "create" when parameters.Length >= 3: HandleCreateCommand(parameters[1], parameters[2], parameters[3..]); break;
+            case "revoke" when parameters.Length == 2: HandleRevokeCommand(parameters[1]); break;
+            case "rotate" when parameters.Length == 2: HandleRotateCommand(parameters[1]); break;
+            default: ShowHelp(); break;
         }
     }
 
@@ -110,7 +100,7 @@ public sealed class ApiKeyCli(Context context, Clock clock)
 
         try
         {
-            key.Disable(TimeProvider.System.GetUtcNow());
+            key.Disable(clock.UtcNow);
             var secret = GenerateKey(name, key.CompanyPrefix);
 
             Console.Write("Rotated API key. New secret: ");
@@ -140,11 +130,10 @@ public sealed class ApiKeyCli(Context context, Clock clock)
 
         var apiKey = new ApiKey
         {
-            Id = Convert.ToBase64String(hash),
+            Secret = Convert.ToBase64String(hash),
             Name = name,
             CompanyPrefix = companyPrefix,
-            BeginValidityDate = clock.UtcNow,
-            EndValidityDate = DateTime.MaxValue
+            BeginValidityDate = clock.UtcNow
         };
 
         context.Add(apiKey);

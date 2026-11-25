@@ -2,11 +2,12 @@
 
 public sealed class ApiKey
 {
-    public required string Id { get; init; }
+    public int Id { get; init; }
+    public required string Secret { get; init; }
     public required string Name { get; init; }
     public required string CompanyPrefix { get; init; }
     public required DateTimeOffset BeginValidityDate { get; init; }
-    public required DateTimeOffset EndValidityDate { get; set; }
+    public DateTimeOffset EndValidityDate { get; set; } = DateTime.MaxValue;
 
     public void Disable(DateTimeOffset endValidityDate)
     {

@@ -33,12 +33,14 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
     public ApiKey? GetApiKeyDetails(string apiKey)
     {
         return Set<ApiKey>()
-            .SingleOrDefault(k => k.Id == apiKey);
+            .SingleOrDefault(k => k.Secret == apiKey);
     }
 
     public ApiKey? GetApiKey(string name)
     {
-        return Set<ApiKey>().AsTracking().FirstOrDefault(k => k.Name == name);
+        return Set<ApiKey>()
+            .AsTracking()
+            .FirstOrDefault(k => k.Name == name);
     }
 
     public List<ApiKey> ListApiKeys()
@@ -84,11 +86,12 @@ public sealed class Context(DbContextOptions<Context> options, Clock clock) : Db
 
         var apiKey = modelBuilder.Entity<ApiKey>();
         apiKey.HasKey(k => k.Id);
-        apiKey.Property(k => k.Id).IsRequired().HasMaxLength(50);
+        apiKey.Property(k => k.Secret).IsRequired().HasMaxLength(50);
         apiKey.Property(k => k.Name).IsRequired();
         apiKey.Property(k => k.CompanyPrefix).IsRequired();
         apiKey.Property(k => k.BeginValidityDate).IsRequired().HasConversion(new DateTimeOffsetToBinaryConverter());
         apiKey.Property(k => k.EndValidityDate).IsRequired().HasConversion(new DateTimeOffsetToBinaryConverter());
+        apiKey.HasIndex(k => k.Secret).HasFilter($"EndValidityDate >= {DateTimeOffsetToBinaryConverter.ToLong(DateTime.MaxValue)}").IsUnique();
         apiKey.HasQueryFilter("ActiveApiKeys", k => k.EndValidityDate >= clock.UtcNow);
     }
 }
