@@ -6,15 +6,12 @@
 
 :root, [data-theme="light"] {
     --bg: #f4f4f5;
-    --link-bg: #efefef;
+    --link-bg: #f9f9f9;
     --surface: #ffffff;
     --text: #141414;
     --border: #DDD;
-    --subtle: #666;
+    --subtle: #B9B9B9;
     --primary: #005fcc;
-    --tag-lang: #141414;
-    --radius: 8px;
-    --shadow: 0 4px 12px rgba(0,0,0,0.08);
     font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
@@ -27,8 +24,6 @@
         --text: #ededed;
         --subtle: #aaa;
         --primary: #7ab8ff;
-        --tag-lang: #cfcfcf;
-        --shadow: 0 4px 12px rgba(255,255,255,0.08);
     }
 }
 
@@ -40,8 +35,6 @@
     --text: #ededed;
     --subtle: #aaa;
     --primary: #7ab8ff;
-    --tag-lang: #cfcfcf;
-    --shadow: 0 4px 12px rgba(255,255,255,0.08);
 }
 
 body {
@@ -70,7 +63,7 @@ body {
 /* Container */
 .content {
     background: var(--surface);
-    border-radius: var(--radius);
+    border-radius: 8px;
     padding: 24px;
     line-height: 1.55;
 
@@ -93,7 +86,7 @@ body {
         & p.anchor {
             font-size: 12px;
             font-family: consolas, sans-serif;
-            color: var(--tag-lang);
+            color: var(--text);
         }
     }
 
@@ -105,13 +98,19 @@ body {
 
     & summary h3 {
         display: inline-block;
+        text-overflow: ellipsis;
+        width: calc(100% - 50px);
     }
 }
 
 a {
     color: var(--primary);
     text-decoration: none;
+    text-overflow: ellipsis;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
 }
 
     a:hover {
@@ -145,15 +144,19 @@ dl {
     grid-template-columns: 8rem auto;
     margin: 12px 10px;
     grid-auto-flow: row;
-    border: 1px solid var(--subtle);
     padding: 5px;
     background: var(--link-bg);
     border-radius: 5px;
+    box-shadow: 1px 1px 7px 0px var(--subtle);
 }
 
 @media (max-width: 600px) {
     body {
-        padding:2vh 1vh;
+        padding:2vh 1vw;
+    }
+
+    .content {
+        padding-left: 10px;
     }
 
     section {
@@ -163,13 +166,6 @@ dl {
     dl {
         display: block;
         width: 100%;
-
-        & a {
-            display: block;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
     }
 
     dt {
