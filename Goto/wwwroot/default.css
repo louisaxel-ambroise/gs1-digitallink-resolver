@@ -101,6 +101,10 @@ body {
         text-overflow: ellipsis;
         width: calc(100% - 50px);
     }
+
+    & a {
+        display: block;
+    }
 }
 
 a {
@@ -110,7 +114,6 @@ a {
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
-    display: block;
 }
 
     a:hover {
@@ -148,6 +151,11 @@ dl {
     background: var(--link-bg);
     border-radius: 5px;
     box-shadow: 1px 1px 7px 0px var(--subtle);
+    transition: box-shadow ease-in-out .2s;
+}
+
+dl:hover{
+    box-shadow: 1px 1px 10px 3px var(--subtle);
 }
 
 @media (max-width: 600px) {
